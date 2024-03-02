@@ -7,21 +7,26 @@
 #include "Apps/AbstractApp.h"
 #include "Static/SDPaths.h"
 #include "Managers/SDManager.h"
-
-#include "Managers/AppManager.h"
+#include "UISolutions/FileExplorer.h"
 
 #define NOTEPAD_PATH_TEXT_COLOR 0xffff
 #define NOTEPAD_BACKGROUND_COLOR 0x0000
 
 namespace Apps
 {
+    enum AppStatus : uint8_t
+    {
+        NONE,
+        EXPLORING
+    };
+
     class NotepadApp : public Apps::AbstractApp
     {
     private:
-        Adafruit_ST7735 &_screen_ref;
+        UISolutions::FileExplorer *_file_explorer_ptr;
+        AppStatus _app_status;
 
     public:
-        NotepadApp(Adafruit_ST7735 &screen_ref);
         // ~SettingsApp();
         void start() override;
         void close() override;

@@ -2,7 +2,6 @@
 #define _APP_MANAGER_H
 
 #include <Arduino.h>
-#include <Adafruit_ST7735.h>
 #include <vector>
 
 #include "Button.h"
@@ -32,8 +31,6 @@ namespace Managers
     class AppManager
     {
     private:
-        Adafruit_ST7735 &_screen_ref;
-
         std::vector<MenuAppWidget> _apps_vector;
 
         int8_t _menu_cursor;
@@ -42,15 +39,15 @@ namespace Managers
         void start_menu();
         void update_menu(ButtonEvents button_events);
         void draw_menu_cursor(uint16_t color);
+
         void open_app(AbstractApp* app);
-        void close_current_app();
-        // @brief close current app and open new app
-        void change_current_app();
+        
 
     public:
-        AppManager(AbstractApp* app_array[], uint8_t app_array_size, Adafruit_ST7735 &screen_ref);
-        void start();
+        void start(AbstractApp* app_array[], uint8_t app_array_size);
         void loop(ButtonEvents button_events);
+
+        void close_current_app();
     };
 };
 

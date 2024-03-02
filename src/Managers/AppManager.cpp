@@ -3,15 +3,16 @@
 namespace Managers
 {
     // app manager
-    AppManager::AppManager(AbstractApp *app_array[], uint8_t app_array_size, Adafruit_ST7735 &screen_ref) : _screen_ref(screen_ref)
+
+    void AppManager::start(AbstractApp *app_array[], uint8_t app_array_size)
     {
-        // заполнение вектора приложений
+        // filling app vector
         for (uint8_t i = 0; i < app_array_size; i++)
         {
             _apps_vector.push_back({0, 0, app_array[i]});
         }
 
-        // расстановка позиций
+        // positioning
         for (uint8_t app_index = 0; app_index < _apps_vector.size(); app_index++)
         {
             uint8_t column = app_index % MENU_COLUMNS;
@@ -19,10 +20,7 @@ namespace Managers
             _apps_vector[app_index].x = MENU_BASIC_PADDING + column * MENU_ICON_SIZE + column * MENU_PADDING;
             _apps_vector[app_index].y = MENU_BASIC_PADDING + row * MENU_ICON_SIZE + row * MENU_PADDING;
         }
-    }
 
-    void AppManager::start()
-    {
         start_menu();
     }
 
@@ -54,26 +52,21 @@ namespace Managers
         start_menu();
     }
 
-    void AppManager::change_current_app()
-    {
-        
-    }
-
     // ---menu---
 
     void AppManager::start_menu()
     {
         // отрисовка
-        _screen_ref.fillScreen(ST7735_BLACK);
+        screen.fillScreen(ST7735_BLACK);
         for (uint8_t app_index = 0; app_index < _apps_vector.size(); app_index++)
         {
             uint16_t *icon = _apps_vector[app_index].app_ptr->get_icon();
             if (icon == nullptr)
             {
-                _screen_ref.drawRGBBitmap(_apps_vector[app_index].x, _apps_vector[app_index].y, ERROR_ICON, MENU_ICON_SIZE, MENU_ICON_SIZE);
+                screen.drawRGBBitmap(_apps_vector[app_index].x, _apps_vector[app_index].y, ERROR_ICON, MENU_ICON_SIZE, MENU_ICON_SIZE);
                 continue;
             }
-            _screen_ref.drawRGBBitmap(_apps_vector[app_index].x, _apps_vector[app_index].y, icon, MENU_ICON_SIZE, MENU_ICON_SIZE);
+            screen.drawRGBBitmap(_apps_vector[app_index].x, _apps_vector[app_index].y, icon, MENU_ICON_SIZE, MENU_ICON_SIZE);
             delete[] icon;
         }
         draw_menu_cursor(MENU_CURSOR_COLOR);
@@ -128,20 +121,20 @@ namespace Managers
         uint8_t y_with_icon = app_y + MENU_ICON_SIZE + 1;
 
         // left top
-        _screen_ref.drawPixel(x_without_icon - 1, y_without_icon, color);
-        _screen_ref.drawPixel(x_without_icon, y_without_icon - 1, color);
-        _screen_ref.drawPixel(x_without_icon, y_without_icon, color); // middle
+        screen.drawPixel(x_without_icon + 1, y_without_icon, color);
+        screen.drawPixel(x_without_icon, y_without_icon + 1, color);
+        screen.drawPixel(x_without_icon, y_without_icon, color); // middle
         // right top
-        _screen_ref.drawPixel(x_with_icon - 1, y_without_icon, color);
-        _screen_ref.drawPixel(x_with_icon, y_without_icon + 1, color);
-        _screen_ref.drawPixel(x_with_icon, y_without_icon, color); // middle
+        screen.drawPixel(x_with_icon - 1, y_without_icon, color);
+        screen.drawPixel(x_with_icon, y_without_icon + 1, color);
+        screen.drawPixel(x_with_icon, y_without_icon, color); // middle
         // left bottom
-        _screen_ref.drawPixel(x_without_icon, y_with_icon - 1, color);
-        _screen_ref.drawPixel(x_without_icon + 1, y_with_icon, color);
-        _screen_ref.drawPixel(x_without_icon, y_with_icon, color); // middle
+        screen.drawPixel(x_without_icon, y_with_icon - 1, color);
+        screen.drawPixel(x_without_icon + 1, y_with_icon, color);
+        screen.drawPixel(x_without_icon, y_with_icon, color); // middle
         // right bottom
-        _screen_ref.drawPixel(x_with_icon, y_with_icon - 1, color);
-        _screen_ref.drawPixel(x_with_icon - 1, y_with_icon, color);
-        _screen_ref.drawPixel(x_with_icon, y_with_icon, color); // middle
+        screen.drawPixel(x_with_icon, y_with_icon - 1, color);
+        screen.drawPixel(x_with_icon - 1, y_with_icon, color);
+        screen.drawPixel(x_with_icon, y_with_icon, color); // middle
     }
 }

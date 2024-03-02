@@ -15,7 +15,8 @@
 #include "Apps/SettingsApp.h"
 #include "Apps/NotepadApp.h"
 
-Adafruit_ST7735 screen = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
+Adafruit_ST7735 screen(TFT_CS, TFT_DC, TFT_RST);
+Managers::AppManager app_manager;
 
 #pragma region Buttons
 Button up_button = Button(UP_BUTTON_PIN);
@@ -28,29 +29,24 @@ Button back_button = Button(BACK_BUTTON_PIN);
 
 #pragma region Apps
 
-SettingsApp settings_app(screen);
-NotepadApp notepad_app(screen);
+SettingsApp settings_app;
+NotepadApp notepad_app;
 
-AbstractApp *app_array[] =
-    {
-        &settings_app,
-        &notepad_app
-    };
+AbstractApp *app_array[] = {
+    &settings_app,
+    &notepad_app};
 
 #pragma endregion
-
-Managers::AppManager app_manager(app_array, sizeof(app_array) / sizeof(AbstractApp *), screen);
 
 ButtonEvents check_buttons()
 {
   return {
-    up_button.check(),
-    down_button.check(),
-    left_button.check(),
-    right_button.check(),
-    center_button.check(),
-    back_button.check()
-  };
+      up_button.check(),
+      down_button.check(),
+      left_button.check(),
+      right_button.check(),
+      center_button.check(),
+      back_button.check()};
   // return ButtonEvents(
   //   up_button.check(),
   //   down_button.check(),
@@ -74,16 +70,16 @@ void setup()
   center_button.setup();
   back_button.setup();
 
-  // sd manager setup
-  Managers::SDManager::setup();
-
   // screen setup
   screen.initR(INITR_144GREENTAB);
   screen.setRotation(2);
   screen.fillScreen(MENU_BACKGROUND_COLOR);
 
+  // sd manager setup
+  Managers::SDManager::setup();
+
   // app manager start
-  app_manager.start();
+  app_manager.start(app_array, sizeof(app_array) / sizeof(AbstractApp *));
 }
 
 void loop()

@@ -7,7 +7,6 @@ namespace Managers
 
     // }
 
-
     void SDManager::_on_cd()
     {
         digitalWrite(TFT_CS, 1);
@@ -20,17 +19,16 @@ namespace Managers
         digitalWrite(SD_CS, 1);
     }
 
-
     bool SDManager::setup()
     {
         _on_cd(); // turn on cd card
-        if(!SD.begin(SD_CS))
+        if (!SD.begin(SD_CS))
         {
             _off_cd();
             return 0;
         }
         uint8_t cardType = SD.cardType();
-        if(cardType == CARD_NONE)
+        if (cardType == CARD_NONE)
         {
             _off_cd();
             return 0;
@@ -40,17 +38,35 @@ namespace Managers
         return 1;
     }
 
-    std::vector<String> SDManager::get_files_by_path(const char* path, bool all_path)
+    String SDManager::get_filename_by_index(const char *path, uint16_t start_index)
+    {
+        _on_cd();
+
+        File dir = SD.open(path);
+        for (uint16_t i = 0; i < start_index; i++)
+            dir.getNextFileName();
+        String filename = dir.getNextFileName();
+
+        dir.close();
+        _off_cd();
+        return filename;
+    }
+
+    std::vector<String> SDManager::get_files_by_path(const char *path, bool all_path, uint16_t start_index, uint16_t end_index)
     {
         _on_cd();
 
         File dir = SD.open(path);
         std::vector<String> filenames;
         String filename;
-        while (true)
+        for (uint16_t i = 0; i < start_index; i++)
+            dir.getNextFileName();
+
+        for (uint16_t i = 0; i <= end_index - start_index; i++)
         {
             filename = dir.getNextFileName();
-            if (filename == "") break;
+            if (filename == "")
+                break;
             if (!all_path)
                 filename = filename.substring(filename.lastIndexOf('/') + 1);
             filenames.push_back(filename);
@@ -60,7 +76,22 @@ namespace Managers
         return filenames;
     }
 
-    char* SDManager::read_file(const char* path, size_t start_byte, size_t end_byte)
+    uint16_t SDManager::get_files_amount(const char *path)
+    {
+        _on_cd();
+
+        File dir = SD.open(path);
+
+        uint16_t files_amount = 0;
+        while (dir.getNextFileName() != "")
+            files_amount++;
+
+        dir.close();
+        _off_cd();
+        return files_amount;
+    }
+
+    char *SDManager::read_file(const char *path, size_t start_byte, size_t end_byte)
     {
         _on_cd();
 
@@ -71,18 +102,19 @@ namespace Managers
             _off_cd();
             return nullptr;
         }
-        
+
         if (end_byte == 0)
             end_byte = file.size();
-        
-        if (end_byte <= start_byte){
+
+        if (end_byte <= start_byte)
+        {
             file.close();
             _off_cd();
             return nullptr;
         }
 
         size_t buffer_size = end_byte - start_byte + 1;
-        char* buffer = new char[buffer_size];
+        char *buffer = new char[buffer_size];
         file.seek(start_byte);
         file.readBytes(buffer, buffer_size - 1);
         buffer[buffer_size - 1] = '\0';
@@ -92,7 +124,7 @@ namespace Managers
         return buffer;
     }
 
-    uint16_t* SDManager::read_bin_image(const char* path)
+    uint16_t *SDManager::read_bin_image(const char *path)
     {
         _on_cd();
         File file = SD.open(path, FILE_READ);
@@ -105,14 +137,13 @@ namespace Managers
         }
 
         size_t file_size = file.size();
-        size_t array_size = file_size  / sizeof(uint16_t);
+        size_t array_size = file_size / sizeof(uint16_t);
         uint16_t *img_array = new uint16_t[array_size];
 
-        file.read((uint8_t*)img_array, file_size);
+        file.read((uint8_t *)img_array, file_size);
 
         file.close();
         _off_cd();
         return img_array;
     }
 }
-

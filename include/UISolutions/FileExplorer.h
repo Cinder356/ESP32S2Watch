@@ -1,0 +1,33 @@
+#ifndef _FILE_EXPLORER_H
+#define _FILE_EXPLORER_H
+
+#include "Static/Screen.h"
+#include "Managers/SDManager.h"
+#include "Static/SDPaths.h"
+#include "Button.h"
+
+#define FE_BACKGROUND SCREEN_BACKGROUND
+#define FE_CURSOR_COLOR 0xffaf
+#define FE_TEXT_SIZE SMALL_TEXT_SIZE
+
+namespace UISolutions
+{
+    class FileExplorer
+    {
+        private:
+            String _current_dir;
+            uint8_t _current_dir_files_amount;
+            uint8_t _current_page = 0;
+            uint8_t _cursor = 0;
+            
+            void change_dir(String path);
+            void draw_cursor(uint16_t color);
+            void draw_page();
+        public:
+            void start(String start_dir = BASE_DIR);
+            // @brief On finding file returns full path
+            String loop(ButtonEvents button_events);
+    };
+}
+
+#endif  

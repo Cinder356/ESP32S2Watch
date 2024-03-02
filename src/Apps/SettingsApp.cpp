@@ -4,13 +4,12 @@
 
 namespace Apps
 {
-    SettingsApp::SettingsApp(Adafruit_ST7735 &screen_ref) : _screen_ref(screen_ref) {}
     // SettingsApp::~SettingsApp() {}
     void SettingsApp::start()
     {
-        _screen_ref.fillScreen(SETTINGS_BACKGROUND_COLOR);
-        _screen_ref.setCursor(0, 0);
-        _screen_ref.println("settings");
+        screen.fillScreen(SETTINGS_BACKGROUND_COLOR);
+        screen.setCursor(0, 0);
+        screen.println("settings");
     }
 
     void SettingsApp::close() {}
@@ -19,39 +18,39 @@ namespace Apps
     {
         if (button_events.up == ButtonEvent::CLICK)
         {
-            _screen_ref.fillScreen(SETTINGS_BACKGROUND_COLOR);
-            _screen_ref.setCursor(0, 0);
-            _screen_ref.println("up");
+            screen.fillScreen(SETTINGS_BACKGROUND_COLOR);
+            screen.setCursor(0, 0);
+            screen.println("up");
         }
         else if (button_events.down == ButtonEvent::CLICK)
         {
-            _screen_ref.fillScreen(SETTINGS_BACKGROUND_COLOR);
-            _screen_ref.setCursor(0, 0);
-            _screen_ref.println("down");
+            screen.fillScreen(SETTINGS_BACKGROUND_COLOR);
+            screen.setCursor(0, 0);
+            screen.println("down");
         }
         else if (button_events.left == ButtonEvent::CLICK)
         {
-            _screen_ref.fillScreen(SETTINGS_BACKGROUND_COLOR);
-            _screen_ref.setCursor(0, 0);
-            _screen_ref.println("left");
+            screen.fillScreen(SETTINGS_BACKGROUND_COLOR);
+            screen.setCursor(0, 0);
+            screen.println("left");
         }
         else if (button_events.right == ButtonEvent::CLICK)
         {
-            _screen_ref.fillScreen(SETTINGS_BACKGROUND_COLOR);
-            _screen_ref.setCursor(0, 0);
-            _screen_ref.println("right");
+            screen.fillScreen(SETTINGS_BACKGROUND_COLOR);
+            screen.setCursor(0, 0);
+            screen.println("right");
         }
         else if (button_events.center == ButtonEvent::CLICK)
         {
-            _screen_ref.fillScreen(SETTINGS_BACKGROUND_COLOR);
-            _screen_ref.setCursor(0, 0);
-            _screen_ref.println("center");
+            screen.fillScreen(SETTINGS_BACKGROUND_COLOR);
+            screen.setCursor(0, 0);
+            screen.println("center");
         }
         else if (button_events.back == ButtonEvent::CLICK)
         {
-            _screen_ref.fillScreen(SETTINGS_BACKGROUND_COLOR);
-            _screen_ref.setCursor(0, 0);
-            _screen_ref.println("back");
+            screen.fillScreen(SETTINGS_BACKGROUND_COLOR);
+            screen.setCursor(0, 0);
+            screen.println("back");
         }
     }
 

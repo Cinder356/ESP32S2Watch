@@ -4,11 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="beec4d16-fb5e-48ac-983c-8397c818c0c2" name="Changes" comment="" />
+    <list default="true" id="beec4d16-fb5e-48ac-983c-8397c818c0c2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../include/Apps/AbstractApp.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../include/Apps/SettingsApp.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/Apps/SettingsApp.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../include/Managers/AppManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/Managers/AppManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/Apps/AbstractApp.cpp" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -26,6 +34,7 @@
     "Python.do_bin_array.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
     "settings.editor.selected.configurable": "advanced.settings"
   }
 }]]></component>
