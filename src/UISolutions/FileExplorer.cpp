@@ -11,12 +11,22 @@ namespace UISolutions
     {
         if (button_events.center == ButtonEvent::CLICK)
         {
-            return Managers::SDManager::get_filename_by_index(_current_dir.c_str(), _cursor);
+            String selected_path = Managers::SDManager::get_filename_by_index(_current_dir.c_str(), _cursor);
+            if (selected_path.lastIndexOf('.') != -1)
+                return selected_path;
+            change_dir(selected_path);
+        }
+        if (button_events.left == ButtonEvent::CLICK)
+        {
+            uint8_t slash_index = _current_dir.lastIndexOf('/');
+            if (slash_index == 0)
+                slash_index = 1;
+            change_dir(_current_dir.substring(0, slash_index));
         }
 
         if (button_events.up == ButtonEvent::CLICK && _cursor > 0)
         {
-            if (_cursor <= _current_page * GET_MAX_TEXT_LINES(FE_TEXT_SIZE))
+            if (_cursor <= _current_page * FE_MAX_FILENAMES_AMOUNT)
             {
                 _cursor--;
                 draw_page();
@@ -25,64 +35,72 @@ namespace UISolutions
             {
                 draw_cursor(FE_BACKGROUND);
                 _cursor--;
+            }
+            draw_cursor(FE_CURSOR_COLOR);
+        }
+        if (button_events.down == ButtonEvent::CLICK && _cursor + 1 < _current_dir_files_amount)
+        {
+            if (_cursor >= (_current_page + 1) * FE_MAX_FILENAMES_AMOUNT - 1)
+            {
+                _cursor++;
+                draw_page();
+            }
+            else
+            {
+                draw_cursor(FE_BACKGROUND);
+                _cursor++;
             }
             draw_cursor(FE_CURSOR_COLOR);
         }
 
-        if (button_events.down == ButtonEvent::CLICK && _cursor + 1 < _current_dir_files_amount)
-        {
-            if (_cursor >= (_current_page + 1) * GET_MAX_TEXT_LINES(FE_TEXT_SIZE) - 1)
-            {
-                _cursor++;
-                draw_page();
-            }
-            else
-            {
-                draw_cursor(FE_BACKGROUND);
-                _cursor++;
-            }
-            draw_cursor(FE_CURSOR_COLOR);
-        }
         return "";
     }
 
     void FileExplorer::change_dir(String path)
     {
+        _cursor = 0;
         _current_dir = path;
         _current_dir_files_amount = Managers::SDManager::get_files_amount(_current_dir.c_str());
         draw_page();
         draw_cursor(FE_CURSOR_COLOR);
+        Serial.println(_current_dir);
     }
 
     void FileExplorer::draw_cursor(uint16_t color)
     {
-        uint16_t y_top = _cursor % GET_MAX_TEXT_LINES(FE_TEXT_SIZE) * (GET_TEXT_HEIGHT(FE_TEXT_SIZE) + 2);
+        uint8_t y_top = _cursor % FE_MAX_FILENAMES_AMOUNT * (GET_TEXT_HEIGHT(FE_TEXT_SIZE) + 2);
         screen.drawLine(1, y_top - 1, 1, y_top + 1 + GET_TEXT_HEIGHT(FE_TEXT_SIZE), color);
     }
 
     void FileExplorer::draw_page()
     {
-        _current_page = _cursor / GET_MAX_TEXT_LINES(FE_TEXT_SIZE);
-        uint8_t start_find_files_index = _current_page * GET_MAX_TEXT_LINES(FE_TEXT_SIZE);
-        std::vector<String> filenames_vector = Managers::SDManager::get_files_by_path(_current_dir.c_str(), 0, start_find_files_index, start_find_files_index + GET_MAX_TEXT_LINES(FE_TEXT_SIZE));
-        // _current_dir_files_amount
-        Serial.print("start: ");
-        Serial.println(_cursor);
-        Serial.print("end: ");
-        Serial.println(_cursor + GET_MAX_TEXT_LINES(FE_TEXT_SIZE));
-
+        _current_page = _cursor / FE_MAX_FILENAMES_AMOUNT;
+        uint8_t start_find_files_index = _current_page * FE_MAX_FILENAMES_AMOUNT;
+        uint8_t end_fine_files_index = start_find_files_index + FE_MAX_FILENAMES_AMOUNT - 1;
+        std::vector<String> filenames_vector = Managers::SDManager::get_files_by_path(_current_dir.c_str(), 0, start_find_files_index, end_fine_files_index);
+        
         screen.fillScreen(FE_BACKGROUND);
         screen.setCursor(0, 0);
         screen.setTextSize(FE_TEXT_SIZE);
+        screen.setTextColor(FE_TEXT_COLOR);
+        // -filnames drawing-
         for (uint8_t i = 0; i < filenames_vector.size(); i++)
         {
             String filename = filenames_vector[i];
             if (filename.length() > 18)
                 filename = filename.substring(0, 16) + "..";
-            screen.print(" ");
-            screen.print(i + 1 + GET_MAX_TEXT_LINES(FE_TEXT_SIZE) * _current_page);
-            screen.print(". ");
+            screen.setCursor(FE_LEFT_TEXT_MARGIN, screen.getCursorY());
+            screen.print(i + 1 + FE_MAX_FILENAMES_AMOUNT * _current_page);
+            screen.print(".");
+            screen.setCursor(screen.getCursorX() + 3, screen.getCursorY());
             screen.println(filename);
         }
+        // -permanent labels drawing-
+        screen.fillRect(0, (SCREEN_HEIGHT - GET_TEXT_HEIGHT(FE_TEXT_SIZE) - LINE_SPACING * 2), SCREEN_WIDTH,  SCREEN_HEIGHT - (SCREEN_HEIGHT - GET_TEXT_HEIGHT(FE_TEXT_SIZE) - LINE_SPACING), FE_TEXT_COLOR);
+        screen.setTextColor(FE_BACKGROUND);
+        screen.setCursor(FE_LEFT_TEXT_MARGIN, (SCREEN_HEIGHT - GET_TEXT_HEIGHT(FE_TEXT_SIZE) - LINE_SPACING * 2));
+        screen.print("<- cd ..");
+        screen.setCursor(SCREEN_WIDTH - 35, screen.getCursorY());
+        screen.print(String(_current_page) + '/' + String(_current_dir_files_amount / FE_MAX_FILENAMES_AMOUNT));
     }
 }
