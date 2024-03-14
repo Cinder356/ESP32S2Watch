@@ -26,7 +26,7 @@ namespace UISolutions
 
         if (button_events.up == ButtonEvent::CLICK && _cursor > 0)
         {
-            if (_cursor <= _current_page * FE_MAX_FILENAMES_AMOUNT)
+            if (_cursor <= _current_page * FE_MAX_FILENAMES_QUANTITY)
             {
                 _cursor--;
                 draw_page();
@@ -40,7 +40,7 @@ namespace UISolutions
         }
         if (button_events.down == ButtonEvent::CLICK && _cursor + 1 < _current_dir_files_amount)
         {
-            if (_cursor >= (_current_page + 1) * FE_MAX_FILENAMES_AMOUNT - 1)
+            if (_cursor >= (_current_page + 1) * FE_MAX_FILENAMES_QUANTITY - 1)
             {
                 _cursor++;
                 draw_page();
@@ -63,20 +63,19 @@ namespace UISolutions
         _current_dir_files_amount = Managers::SDManager::get_files_amount(_current_dir.c_str());
         draw_page();
         draw_cursor(FE_CURSOR_COLOR);
-        Serial.println(_current_dir);
     }
 
     void FileExplorer::draw_cursor(uint16_t color)
     {
-        uint8_t y_top = _cursor % FE_MAX_FILENAMES_AMOUNT * (GET_TEXT_HEIGHT(FE_TEXT_SIZE) + 2);
+        uint8_t y_top = _cursor % FE_MAX_FILENAMES_QUANTITY * GET_TEXT_HEIGHT(FE_TEXT_SIZE);
         screen.drawLine(1, y_top - 1, 1, y_top + 1 + GET_TEXT_HEIGHT(FE_TEXT_SIZE), color);
     }
 
     void FileExplorer::draw_page()
     {
-        _current_page = _cursor / FE_MAX_FILENAMES_AMOUNT;
-        uint8_t start_find_files_index = _current_page * FE_MAX_FILENAMES_AMOUNT;
-        uint8_t end_fine_files_index = start_find_files_index + FE_MAX_FILENAMES_AMOUNT - 1;
+        _current_page = _cursor / FE_MAX_FILENAMES_QUANTITY;
+        uint8_t start_find_files_index = _current_page * FE_MAX_FILENAMES_QUANTITY;
+        uint8_t end_fine_files_index = start_find_files_index + FE_MAX_FILENAMES_QUANTITY - 1;
         std::vector<String> filenames_vector = Managers::SDManager::get_files_by_path(_current_dir.c_str(), 0, start_find_files_index, end_fine_files_index);
         
         screen.fillScreen(FE_BACKGROUND);
@@ -90,17 +89,17 @@ namespace UISolutions
             if (filename.length() > 18)
                 filename = filename.substring(0, 16) + "..";
             screen.setCursor(FE_LEFT_TEXT_MARGIN, screen.getCursorY());
-            screen.print(i + 1 + FE_MAX_FILENAMES_AMOUNT * _current_page);
+            screen.print(i + 1 + FE_MAX_FILENAMES_QUANTITY * _current_page);
             screen.print(".");
             screen.setCursor(screen.getCursorX() + 3, screen.getCursorY());
             screen.println(filename);
         }
         // -permanent labels drawing-
-        screen.fillRect(0, (SCREEN_HEIGHT - GET_TEXT_HEIGHT(FE_TEXT_SIZE) - LINE_SPACING * 2), SCREEN_WIDTH,  SCREEN_HEIGHT - (SCREEN_HEIGHT - GET_TEXT_HEIGHT(FE_TEXT_SIZE) - LINE_SPACING), FE_TEXT_COLOR);
+        screen.fillRect(0, (SCREEN_HEIGHT - GET_TEXT_HEIGHT(FE_TEXT_SIZE)), SCREEN_WIDTH,  SCREEN_HEIGHT - (SCREEN_HEIGHT - GET_TEXT_HEIGHT(FE_TEXT_SIZE)), FE_TEXT_COLOR);
         screen.setTextColor(FE_BACKGROUND);
-        screen.setCursor(FE_LEFT_TEXT_MARGIN, (SCREEN_HEIGHT - GET_TEXT_HEIGHT(FE_TEXT_SIZE) - LINE_SPACING * 2));
+        screen.setCursor(FE_LEFT_TEXT_MARGIN, (SCREEN_HEIGHT - GET_TEXT_HEIGHT(FE_TEXT_SIZE)));
         screen.print("<- cd ..");
         screen.setCursor(SCREEN_WIDTH - 35, screen.getCursorY());
-        screen.print(String(_current_page) + '/' + String(_current_dir_files_amount / FE_MAX_FILENAMES_AMOUNT));
+        screen.print(String(_current_page) + '/' + String(_current_dir_files_amount / FE_MAX_FILENAMES_QUANTITY));
     }
 }

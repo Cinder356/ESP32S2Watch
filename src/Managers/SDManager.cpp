@@ -38,11 +38,21 @@ namespace Managers
         return 1;
     }
 
-    String SDManager::get_filename_by_index(const char *path, uint16_t start_index)
+    size_t SDManager::get_file_size(const char *file_path)
+    {   
+        _on_cd();
+
+        File file = SD.open(file_path);
+        size_t file_size = file.size();
+        _off_cd();
+        return file_size;
+    }
+
+    String SDManager::get_filename_by_index(const char *dir_path, uint16_t start_index)
     {
         _on_cd();
 
-        File dir = SD.open(path);
+        File dir = SD.open(dir_path);
         for (uint16_t i = 0; i < start_index; i++)
             dir.getNextFileName();
         String filename = dir.getNextFileName();
@@ -96,6 +106,16 @@ namespace Managers
         _on_cd();
 
         File file = SD.open(path, FILE_READ);
+
+        Serial.println("read_file statistic: ");
+        Serial.println("    path: " + String(path));
+        Serial.println("    start_byte: " + String(start_byte));
+        Serial.println("    end_byte: " + String(end_byte));
+        Serial.println("    file_status: " + String(1 ? file : 0));
+        Serial.println("    file_size: " + String(file.size()));
+        // Serial.println("    : " + String());
+        // Serial.println("    : " + String());
+
         if (!file || file.isDirectory())
         {
             file.close();
@@ -103,8 +123,9 @@ namespace Managers
             return nullptr;
         }
 
-        if (end_byte == 0)
-            end_byte = file.size();
+        size_t file_size = file.size();
+        if (end_byte == 0 || end_byte > file_size)
+            end_byte = file_size;
 
         if (end_byte <= start_byte)
         {
@@ -112,6 +133,9 @@ namespace Managers
             _off_cd();
             return nullptr;
         }
+
+        // Serial.println("start: " + String(start_byte));
+        // Serial.println("end: " + String(end_byte));
 
         size_t buffer_size = end_byte - start_byte + 1;
         char *buffer = new char[buffer_size];

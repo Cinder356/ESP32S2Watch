@@ -2,7 +2,7 @@
 #define _BUTTON_H
 #include <Arduino.h>
 
-enum ButtonEvent : uint8_t // указываем тип элемента
+enum class ButtonEvent : uint8_t // указываем тип элемента
 {
     NONE,
     CLICK

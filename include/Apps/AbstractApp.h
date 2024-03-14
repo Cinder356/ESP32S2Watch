@@ -30,20 +30,18 @@ namespace Apps
 /*app sample:
 .h
 
-#include <Adafruit_ST7735.h>
 #include "Apps/AbstractApp.h"
 #include "Managers/SDManager.h"
 #include "Static/SDPaths.h"
+#include "Static/Screen.h"
 namespace Apps
 {
     class ___ : public Apps::AbstractApp
     {
     private:
-        Adafruit_ST7735 &_screen_ref;
 
     public:
-        ___(Adafruit_ST7735 &screen_ref);
-        // ~SettingsApp();
+        // ~___();
         void start() override;
         void close() override;
         void update(ButtonEvents button_events) override;
@@ -55,8 +53,6 @@ namespace Apps
 #include "Apps/___.h"
 namespace Apps
 {
-    ___::___(Adafruit_ST7735 &screen_ref) : _screen_ref(screen_ref) {}
-
     void ___::start() {}
     void ___::close() {}
     void ___::update(ButtonEvents button_events) {}

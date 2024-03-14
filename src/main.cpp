@@ -60,7 +60,7 @@ ButtonEvents check_buttons()
 void setup()
 {
   Serial.begin(115200);
-  // while(!Serial);
+  // while (!Serial);
 
   // buttons setup
   up_button.setup();

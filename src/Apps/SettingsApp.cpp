@@ -1,7 +1,5 @@
 #include "Apps/SettingsApp.h"
 
-
-
 namespace Apps
 {
     // SettingsApp::~SettingsApp() {}
@@ -14,7 +12,7 @@ namespace Apps
 
     void SettingsApp::close() {}
 
-    void SettingsApp::update(ButtonEvents button_events) 
+    void SettingsApp::update(ButtonEvents button_events)
     {
         if (button_events.up == ButtonEvent::CLICK)
         {

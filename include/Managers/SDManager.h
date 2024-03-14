@@ -17,8 +17,9 @@ namespace Managers
     public:
         // SDManager();
         static bool setup();
+        static size_t get_file_size(const char* file_path);
         // @brief return file by path and index
-        static String get_filename_by_index(const char *path, uint16_t start_index);
+        static String get_filename_by_index(const char *dir_path, uint16_t start_index);
         // @brief returns files by path. @param start_index start file index @param end_index end file index @param all_path if enable returns all path of file
         static std::vector<String> get_files_by_path(const char *path, bool all_path = 1, uint16_t start_index = 0, uint16_t end_index = USHRT_MAX);
         // @brief returns files amount in directory by path

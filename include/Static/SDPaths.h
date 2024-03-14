@@ -7,6 +7,7 @@
 
 #define SETTINGS_ICON_PATH "/BaseDir/BinImages/settings.bin"
 #define NOTEPAD_ICON_PATH "/BaseDir/BinImages/notepad.bin"
+#define IR_HUB_ICON_PATH "/BaseDir/BinImages/ir_hub.bin"
 
 // inline const char* SETTINGS_ICON_PATH = "/BaseDir/BinImages/settings.bin";
 

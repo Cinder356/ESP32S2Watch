@@ -31,7 +31,7 @@ namespace Managers
         else
         {
             _current_app_ptr->update(button_events);
-            if (button_events.back)
+            if (button_events.back == ButtonEvent::CLICK)
                 close_current_app();
         }
     }
@@ -74,21 +74,21 @@ namespace Managers
 
     void AppManager::update_menu(ButtonEvents button_events)
     {
-        if (button_events.up)
+        if (button_events.up == ButtonEvent::CLICK)
         {
             draw_menu_cursor(MENU_BACKGROUND_COLOR);
             if (!(_menu_cursor - MENU_COLUMNS < 0))
                 _menu_cursor -= MENU_COLUMNS;
             draw_menu_cursor(MENU_CURSOR_COLOR);
         }
-        else if (button_events.down)
+        else if (button_events.down == ButtonEvent::CLICK)
         {
             draw_menu_cursor(MENU_BACKGROUND_COLOR);
             if (!(_menu_cursor + MENU_COLUMNS >= _apps_vector.size()))
                 _menu_cursor += MENU_COLUMNS;
             draw_menu_cursor(MENU_CURSOR_COLOR);
         }
-        else if (button_events.left)
+        else if (button_events.left == ButtonEvent::CLICK)
         {
             draw_menu_cursor(MENU_BACKGROUND_COLOR);
             if (_menu_cursor == 0)
@@ -97,7 +97,7 @@ namespace Managers
                 _menu_cursor--;
             draw_menu_cursor(MENU_CURSOR_COLOR);
         }
-        else if (button_events.right)
+        else if (button_events.right == ButtonEvent::CLICK)
         {
             draw_menu_cursor(MENU_BACKGROUND_COLOR);
             if (_menu_cursor == _apps_vector.size() - 1)
@@ -106,7 +106,7 @@ namespace Managers
                 _menu_cursor++;
             draw_menu_cursor(MENU_CURSOR_COLOR);
         }
-        else if (button_events.center)
+        else if (button_events.center == ButtonEvent::CLICK)
             open_app(_apps_vector[_menu_cursor].app_ptr);
     }
 
