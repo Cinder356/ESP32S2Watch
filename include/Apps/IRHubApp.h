@@ -5,13 +5,14 @@
 #include "Managers/SDManager.h"
 #include "Static/SDPaths.h"
 #include "Static/Screen.h"
+#include "UISolutions/SelectionList.h"
 
 namespace Apps
 {
     class IRHubApp : public Apps::AbstractApp
     {
     private:
-
+        UISolutions::SelectionList *_selection_list;
 
     public:
         // ~IRHubApp();

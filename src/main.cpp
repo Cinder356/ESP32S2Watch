@@ -14,6 +14,7 @@
 #include "Apps/AbstractApp.h"
 #include "Apps/SettingsApp.h"
 #include "Apps/NotepadApp.h"
+#include "Apps/IRHubApp.h"
 
 Adafruit_ST7735 screen(TFT_CS, TFT_DC, TFT_RST);
 Managers::AppManager app_manager;
@@ -31,10 +32,12 @@ Button back_button = Button(BACK_BUTTON_PIN);
 
 SettingsApp settings_app;
 NotepadApp notepad_app;
+IRHubApp ir_hub_app;
 
 AbstractApp *app_array[] = {
     &settings_app,
-    &notepad_app};
+    &notepad_app,
+    &ir_hub_app};
 
 #pragma endregion
 
@@ -60,7 +63,6 @@ ButtonEvents check_buttons()
 void setup()
 {
   Serial.begin(115200);
-  // while (!Serial);
 
   // buttons setup
   up_button.setup();
