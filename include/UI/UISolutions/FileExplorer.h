@@ -14,7 +14,7 @@
 #define FE_PERMANENT_LABELS_QUANTITY 1
 #define FE_MAX_FILENAMES_QUANTITY (GET_MAX_TEXT_LINES(FE_TEXT_SIZE) - FE_PERMANENT_LABELS_QUANTITY)
 
-namespace UISolutions
+namespace UI::UISolutions
 {
     class FileExplorer
     {

@@ -1,6 +1,6 @@
-#include "UISolutions/FileExplorer.h"
+#include "UI/UISolutions/FileExplorer.h"
 
-namespace UISolutions
+namespace UI::UISolutions
 {
     void FileExplorer::start(String start_dir)
     {

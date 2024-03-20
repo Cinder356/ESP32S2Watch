@@ -4,7 +4,7 @@ namespace Apps
 {
     void NotepadApp::start()
     {
-        _file_explorer_ptr = new UISolutions::FileExplorer();
+        _file_explorer_ptr = new UI::UISolutions::FileExplorer();
         _file_explorer_ptr->start(TEXT_FILES_FOLDER);
         _app_status = AppStatus::EXPLORING;
     }

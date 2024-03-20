@@ -1,6 +1,6 @@
-#include "UISolutions/SelectionList.h"
+#include "UI/UISolutions/SelectionList.h"
 
-namespace UISolutions
+namespace UI::UISolutions
 {
     SelectionList::~SelectionList()
     {

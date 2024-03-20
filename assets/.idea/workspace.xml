@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="beec4d16-fb5e-48ac-983c-8397c818c0c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../include/Apps/AbstractApp.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../include/Apps/SettingsApp.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/Apps/SettingsApp.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../include/Managers/AppManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/Managers/AppManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/Apps/AbstractApp.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/do_bin_array.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/do_bin_array.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../include/Apps/IRHubApp.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/Apps/IRHubApp.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../include/Apps/NotepadApp.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/Apps/NotepadApp.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../include/Static/Screen.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/Static/Screen.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../include/UISolutions/FileExplorer.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../include/UISolutions/SelectionList.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/Apps/IRHubApp.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/Apps/IRHubApp.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/Apps/NotepadApp.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/Apps/NotepadApp.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/UISolutions/FileExplorer.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/UISolutions/SelectionList.cpp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,15 +36,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.do_bin_array.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "settings.editor.selected.configurable": "advanced.settings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.do_bin_array.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

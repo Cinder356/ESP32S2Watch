@@ -13,7 +13,7 @@
 #define SL_MAX_TEXT_LINES (SCREEN_HEIGHT / SL_TEXT_HEIGHT)
 #define SL_MAX_TEXT_COLUMNS GET_MAX_TEXT_COLUMNS(SL_TEXT_SIZE) - 1
 
-namespace UISolutions
+namespace UI::UISolutions
 {
     class SelectionList
     {

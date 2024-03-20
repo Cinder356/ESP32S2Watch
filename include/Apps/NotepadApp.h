@@ -7,7 +7,7 @@
 #include "Apps/AbstractApp.h"
 #include "Static/SDPaths.h"
 #include "Managers/SDManager.h"
-#include "UISolutions/FileExplorer.h"
+#include "UI/UISolutions/FileExplorer.h"
 
 #define NOTEPAD_TEXT_COLOR 0xffff
 #define NOTEPAD_BACKGROUND_COLOR 0x0000
@@ -29,7 +29,7 @@ namespace Apps
     class NotepadApp : public Apps::AbstractApp
     {
     private:
-        UISolutions::FileExplorer *_file_explorer_ptr;
+        UI::UISolutions::FileExplorer *_file_explorer_ptr;
         AppStatus _app_status = AppStatus::NONE;
         String _file_path;
         uint8_t _current_page;
