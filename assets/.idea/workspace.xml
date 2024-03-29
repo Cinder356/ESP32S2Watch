@@ -5,22 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="beec4d16-fb5e-48ac-983c-8397c818c0c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/scripts/transformation_tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/arr.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/arr.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/do_bin_array.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/do_bin_array.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../include/Apps/IRHubApp.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/Apps/IRHubApp.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../include/Apps/NotepadApp.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/Apps/NotepadApp.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../include/Static/Screen.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/Static/Screen.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../include/UISolutions/FileExplorer.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../include/UISolutions/SelectionList.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/Apps/IRHubApp.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/Apps/IRHubApp.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/Apps/NotepadApp.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/Apps/NotepadApp.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/UISolutions/FileExplorer.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/UISolutions/SelectionList.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../include/Static/Bitmaps.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/Static/Bitmaps.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -36,15 +39,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.do_bin_array.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.do_bin_array.executor": "Run",
+    "Python.transformation_tests.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/Projects/C++/Arduino/PlatformIO/esp32s2_Watch/assets/scripts/venv",
+    "settings.editor.selected.configurable": "editor.preferences.tabs"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

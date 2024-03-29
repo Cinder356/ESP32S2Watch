@@ -71,7 +71,7 @@ def convert_img(input_path: str, output_path: str, save_to_bin: bool):
 
 
 def main():
-    name = "ir_hub"
+    name = "h"
     save_to_bin = True
 
     convert_img(f"../images/{name}.bmp", f"../bin-images/{name}.bin", save_to_bin)

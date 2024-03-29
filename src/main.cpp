@@ -50,19 +50,44 @@ ButtonEvents check_buttons()
       right_button.check(),
       center_button.check(),
       back_button.check()};
-  // return ButtonEvents(
-  //   up_button.check(),
-  //   down_button.check(),
-  //   left_button.check(),
-  //   right_button.check(),
-  //   center_button.check(),
-  //   back_button.check()
-  // );
 }
+
+// void animation_start()
+// {
+//   screen.fillScreen(0x0000);
+//   uint16_t *img = Managers::SDManager::read_bin_image("/BaseDir/BinImages/h.bin");
+
+//   const uint8_t s_x = 15;
+//   const uint8_t s_y = 15;
+//   const uint8_t w = 64;
+//   const uint8_t h = 64;
+//   // const float rotate_degree = 40;
+
+//   uint16_t degree = 0;
+//   while(1)
+//   {
+//     degree += 5;
+//     if (degree >= 360)
+//       degree = 0;
+//     screen.fillScreen(0x0000);
+//     screen.setCursor(100, 100);
+//     screen.print(degree);
+//     screen.setCursor(screen.getCursorX(), 95);
+//     screen.print("o");
+
+//     draw_rotated_img(s_x, s_y, img, w, h, degree);
+//     delay(40);
+//   }
+
+//   delete[] img;
+// }
 
 void setup()
 {
   Serial.begin(115200);
+  // while (!Serial)
+  //   ;
+  // delay(200);
 
   // buttons setup
   up_button.setup();
@@ -83,7 +108,6 @@ void setup()
   // app manager start
   app_manager.start(app_array, sizeof(app_array) / sizeof(AbstractApp *));
 }
-
 void loop()
 {
   ButtonEvents button_events = check_buttons();

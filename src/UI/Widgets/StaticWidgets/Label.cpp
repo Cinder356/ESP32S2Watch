@@ -7,7 +7,7 @@ namespace UI::Widgets::Static
         delete[] _text_ptr;
     }
 
-    Label::Label(uint8_t x, uint8_t y, char *text_ptr) : _x(x), _y(y)
+    Label::Label(uint8_t x, uint8_t y, const char *text_ptr) : _x(x), _y(y)
     {
         _text_ptr = new char[strlen(text_ptr) + 1];
         strcpy(_text_ptr, text_ptr);
