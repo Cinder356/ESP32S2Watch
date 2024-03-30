@@ -3,7 +3,7 @@
 
 #include <Adafruit_ST7735.h>
 
-#include "Button.h"
+#include "PhysButton.h"
 #include "Apps/AbstractApp.h"
 #include "Static/SDPaths.h"
 #include "Managers/SDManager.h"
@@ -41,7 +41,7 @@ namespace Apps
         // ~SettingsApp();
         void start() override;
         void close() override;
-        void update(ButtonEvents button_events) override;
+        void update() override;
         uint16_t *get_icon() const override;
     };
 }

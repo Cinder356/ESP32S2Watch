@@ -7,16 +7,16 @@ namespace UI::UISolutions
         change_dir(start_dir.c_str());
     };
 
-    String FileExplorer::loop(ButtonEvents button_events)
+    String FileExplorer::loop()
     {
-        if (button_events.center == ButtonEvent::CLICK)
+        if (btn_st_center == ButtonEvent::CLICK)
         {
             String selected_path = Managers::SDManager::get_filename_by_index(_current_dir.c_str(), _cursor);
             if (selected_path.lastIndexOf('.') != -1)
                 return selected_path;
             change_dir(selected_path);
         }
-        if (button_events.left == ButtonEvent::CLICK)
+        if (btn_st_left == ButtonEvent::CLICK)
         {
             uint8_t slash_index = _current_dir.lastIndexOf('/');
             if (slash_index == 0)
@@ -24,7 +24,7 @@ namespace UI::UISolutions
             change_dir(_current_dir.substring(0, slash_index));
         }
 
-        if (button_events.up == ButtonEvent::CLICK && _cursor > 0)
+        if (btn_st_up == ButtonEvent::CLICK && _cursor > 0)
         {
             if (_cursor <= _current_page * FE_MAX_FILENAMES_QUANTITY)
             {
@@ -38,7 +38,7 @@ namespace UI::UISolutions
             }
             draw_cursor(FE_CURSOR_COLOR);
         }
-        if (button_events.down == ButtonEvent::CLICK && _cursor + 1 < _current_dir_files_amount)
+        if (btn_st_down == ButtonEvent::CLICK && _cursor + 1 < _current_dir_files_amount)
         {
             if (_cursor >= (_current_page + 1) * FE_MAX_FILENAMES_QUANTITY - 1)
             {

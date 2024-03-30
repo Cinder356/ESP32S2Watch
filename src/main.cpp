@@ -7,7 +7,7 @@
 
 #include "Static/Pins.h"
 #include "Static/Bitmaps.h"
-#include "Button.h"
+#include "PhysButton.h"
 #include "Managers/AppManager.h"
 #include "Managers/SDManager.h"
 
@@ -26,6 +26,13 @@ Button left_button = Button(LEFT_BUTTON_PIN);
 Button right_button = Button(RIGHT_BUTTON_PIN);
 Button center_button = Button(CENTER_BUTTON_PIN);
 Button back_button = Button(BACK_BUTTON_PIN);
+
+ButtonEvent btn_st_up;
+ButtonEvent btn_st_down;
+ButtonEvent btn_st_left;
+ButtonEvent btn_st_right;
+ButtonEvent btn_st_center;
+ButtonEvent btn_st_back;
 #pragma endregion
 
 #pragma region Apps
@@ -41,15 +48,14 @@ AbstractApp *app_array[] = {
 
 #pragma endregion
 
-ButtonEvents check_buttons()
+void check_buttons()
 {
-  return {
-      up_button.check(),
-      down_button.check(),
-      left_button.check(),
-      right_button.check(),
-      center_button.check(),
-      back_button.check()};
+  btn_st_up = up_button.check();
+  btn_st_down = down_button.check();
+  btn_st_left = left_button.check();
+  btn_st_right = right_button.check();
+  btn_st_center = center_button.check();
+  btn_st_back = back_button.check();
 }
 
 // void animation_start()
@@ -110,6 +116,6 @@ void setup()
 }
 void loop()
 {
-  ButtonEvents button_events = check_buttons();
-  app_manager.loop(button_events);
+  check_buttons();
+  app_manager.loop();
 }

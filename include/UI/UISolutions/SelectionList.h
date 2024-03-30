@@ -2,7 +2,7 @@
 #define _SELECTION_LIST_H
 
 #include "Static/Screen.h"
-#include "Button.h"
+#include "PhysButton.h"
 
 #define SL_BASE_BACKGROUND_COLOR 0x0000
 #define SL_BASE_TEXT_COLOR 0xffff
@@ -27,7 +27,7 @@ namespace UI::UISolutions
         ~SelectionList();
         void start(const char** lines_array_ptr, uint8_t arr_size, uint16_t background_color=SL_BASE_BACKGROUND_COLOR, uint16_t text_color=SL_BASE_TEXT_COLOR);
         //@brief on select returns selected item
-        int16_t loop(ButtonEvents button_events);
+        int16_t loop();
         void draw_cursor(uint16_t color);
         void draw_page();
     };

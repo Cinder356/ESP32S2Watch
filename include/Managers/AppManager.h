@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include <vector>
 
-#include "Button.h"
+#include "PhysButton.h"
 #include "Apps/AbstractApp.h"
 #include "Managers/SDManager.h"
 #include "Static/Bitmaps.h"
@@ -37,15 +37,13 @@ namespace Managers
         AbstractApp *_current_app_ptr = nullptr;
 
         void start_menu();
-        void update_menu(ButtonEvents button_events);
+        void update_menu();
         void draw_menu_cursor(uint16_t color);
-
-        void open_app(AbstractApp* app);
         
-
+        void open_app(AbstractApp* app);
     public:
         void start(AbstractApp* app_array[], uint8_t app_array_size);
-        void loop(ButtonEvents button_events);
+        void loop();
 
         void close_current_app();
     };

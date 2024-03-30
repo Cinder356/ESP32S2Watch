@@ -24,14 +24,14 @@ namespace Managers
         start_menu();
     }
 
-    void AppManager::loop(ButtonEvents button_events)
+    void AppManager::loop()
     {
         if (_current_app_ptr == nullptr)
-            update_menu(button_events);
+            update_menu();
         else
         {
-            _current_app_ptr->update(button_events);
-            if (button_events.back == ButtonEvent::CLICK)
+            _current_app_ptr->update();
+            if (btn_st_back == ButtonEvent::CLICK)
                 close_current_app();
         }
     }
@@ -72,23 +72,23 @@ namespace Managers
         draw_menu_cursor(MENU_CURSOR_COLOR);
     }
 
-    void AppManager::update_menu(ButtonEvents button_events)
+    void AppManager::update_menu()
     {
-        if (button_events.up == ButtonEvent::CLICK)
+        if (btn_st_up == ButtonEvent::CLICK)
         {
             draw_menu_cursor(MENU_BACKGROUND_COLOR);
             if (!(_menu_cursor - MENU_COLUMNS < 0))
                 _menu_cursor -= MENU_COLUMNS;
             draw_menu_cursor(MENU_CURSOR_COLOR);
         }
-        else if (button_events.down == ButtonEvent::CLICK)
+        else if (btn_st_down == ButtonEvent::CLICK)
         {
             draw_menu_cursor(MENU_BACKGROUND_COLOR);
             if (!(_menu_cursor + MENU_COLUMNS >= _apps_vector.size()))
                 _menu_cursor += MENU_COLUMNS;
             draw_menu_cursor(MENU_CURSOR_COLOR);
         }
-        else if (button_events.left == ButtonEvent::CLICK)
+        else if (btn_st_left == ButtonEvent::CLICK)
         {
             draw_menu_cursor(MENU_BACKGROUND_COLOR);
             if (_menu_cursor == 0)
@@ -97,7 +97,7 @@ namespace Managers
                 _menu_cursor--;
             draw_menu_cursor(MENU_CURSOR_COLOR);
         }
-        else if (button_events.right == ButtonEvent::CLICK)
+        else if (btn_st_right == ButtonEvent::CLICK)
         {
             draw_menu_cursor(MENU_BACKGROUND_COLOR);
             if (_menu_cursor == _apps_vector.size() - 1)
@@ -106,7 +106,7 @@ namespace Managers
                 _menu_cursor++;
             draw_menu_cursor(MENU_CURSOR_COLOR);
         }
-        else if (button_events.center == ButtonEvent::CLICK)
+        else if (btn_st_center == ButtonEvent::CLICK)
             open_app(_apps_vector[_menu_cursor].app_ptr);
     }
 

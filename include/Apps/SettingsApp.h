@@ -1,7 +1,7 @@
 #ifndef _SETTINGS_APP_H
 #define _SETTINGS_APP_H
 
-#include "Button.h"
+#include "PhysButton.h"
 #include "Apps/AbstractApp.h"
 #include "Static/SDPaths.h"
 #include "Managers/SDManager.h"
@@ -17,7 +17,7 @@ namespace Apps
     public:
         void start() override;
         void close() override;
-        void update(ButtonEvents button_events) override;
+        void update() override;
         uint16_t *get_icon() const override;
     };
 };

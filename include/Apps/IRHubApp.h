@@ -20,7 +20,7 @@ namespace Apps
         // ~IRHubApp();
         void start() override;
         void close() override;
-        void update(ButtonEvents button_events) override;
+        void update() override;
         uint16_t *get_icon() const override;
     };
 }

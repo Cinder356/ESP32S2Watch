@@ -2,7 +2,7 @@
 #define _APP_H
 #include <Arduino.h>
 #include "Static/Screen.h"
-#include "Button.h"
+#include "PhysButton.h"
 
 namespace Apps
 {
@@ -21,7 +21,7 @@ namespace Apps
 
         virtual void start() = 0;
         virtual void close() = 0;
-        virtual void update(ButtonEvents button_events) = 0;
+        virtual void update() = 0;
         virtual uint16_t *get_icon() const = 0;
     };
 };

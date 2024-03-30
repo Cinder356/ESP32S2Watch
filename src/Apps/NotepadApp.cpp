@@ -18,13 +18,13 @@ namespace Apps
         Serial.println(ESP.getFreeHeap());
     }
 
-    void NotepadApp::update(ButtonEvents button_events)
+    void NotepadApp::update()
     {
         switch (_app_status)
         {
         case AppStatus::EXPLORING:
         {
-            String res = _file_explorer_ptr->loop(button_events);
+            String res = _file_explorer_ptr->loop();
             if (res != "")
                 open_txt(res);
             break;
@@ -32,12 +32,12 @@ namespace Apps
 
         case AppStatus::TEXT_VIEW:
         {
-            if (button_events.right == ButtonEvent::CLICK && _current_page < _file_pages_quantity)
+            if (btn_st_right == ButtonEvent::CLICK && _current_page < _file_pages_quantity)
             {
                 _current_page++;
                 draw_page();
             }
-            if (button_events.left == ButtonEvent::CLICK && _current_page > 0)
+            if (btn_st_left == ButtonEvent::CLICK && _current_page > 0)
             {
                 _current_page--;
                 draw_page();

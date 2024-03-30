@@ -8,20 +8,10 @@ enum class ButtonEvent : uint8_t // указываем тип элемента
     CLICK
 };
 
-struct ButtonEvents // __attribute__((packed))
-{
-    ButtonEvent up;
-    ButtonEvent down;
-    ButtonEvent left;
-    ButtonEvent right;
-    ButtonEvent center;
-    ButtonEvent back;
-};
-
 class Button
 {
 private:
-    const uint16_t _BUTTON_COOLDOWN = 200;
+    static const uint16_t _BUTTON_COOLDOWN = 200;
     uint8_t _pin;
     unsigned long _last_press_time = 0;
     bool _was_pressed_flag;
@@ -31,5 +21,12 @@ public:
     void setup();
     ButtonEvent check();
 };
+
+extern ButtonEvent btn_st_up;
+extern ButtonEvent btn_st_down;
+extern ButtonEvent btn_st_left;
+extern ButtonEvent btn_st_right;
+extern ButtonEvent btn_st_center;
+extern ButtonEvent btn_st_back;
 
 #endif

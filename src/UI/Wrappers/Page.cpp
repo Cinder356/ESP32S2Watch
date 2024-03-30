@@ -6,17 +6,17 @@ namespace UI::Wrappers
 
     Page::Page(uint16_t background_color) : _background_color(background_color) {}
 
-    void Page::update(ButtonEvents button_events)
+    void Page::update()
     {
-        if (button_events.center == ButtonEvent::CLICK)
+        if (btn_st_center == ButtonEvent::CLICK)
             _interactive_widgets_vector[_cursor]->invoke();
-        if (button_events.up == ButtonEvent::CLICK && _cursor > 0)
+        if (btn_st_up == ButtonEvent::CLICK && _cursor > 0)
         {
             _interactive_widgets_vector[_cursor]->deselect();
             _cursor--;
             _interactive_widgets_vector[_cursor]->select();
         }
-        if (button_events.down == ButtonEvent::CLICK && _cursor < _interactive_widgets_vector.size() - 1)
+        if (btn_st_down == ButtonEvent::CLICK && _cursor < _interactive_widgets_vector.size() - 1)
         {
             _interactive_widgets_vector[_cursor]->deselect();
             _cursor++;

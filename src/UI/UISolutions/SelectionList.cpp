@@ -28,11 +28,11 @@ namespace UI::UISolutions
         draw_cursor(SL_CURSOR_COLOR);
     }
 
-    int16_t SelectionList::loop(ButtonEvents button_events)
+    int16_t SelectionList::loop()
     {
-        if (button_events.center == ButtonEvent::CLICK)
+        if (btn_st_center == ButtonEvent::CLICK)
             return _cursor;
-        if (button_events.up == ButtonEvent::CLICK && _cursor > 0)
+        if (btn_st_up == ButtonEvent::CLICK && _cursor > 0)
         {
             if (_cursor % SL_MAX_TEXT_LINES == 0 && _cursor != 1)
             {
@@ -46,7 +46,7 @@ namespace UI::UISolutions
             }
             draw_cursor(SL_CURSOR_COLOR);
         }
-        if (button_events.down == ButtonEvent::CLICK && _cursor + 1 < _arr_size)
+        if (btn_st_down == ButtonEvent::CLICK && _cursor + 1 < _arr_size)
         {
             if ((_cursor + 1) % SL_MAX_TEXT_LINES == 0)
             {

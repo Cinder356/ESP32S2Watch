@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "Static/Screen.h"
-#include "Button.h"
+#include "PhysButton.h"
 
 #pragma region WidgetsInclude
 #include "UI/Widgets/StaticWidgets/AbstractStaticWidget.h"
@@ -30,10 +30,11 @@ namespace UI::Wrappers
     public:
         ~Page();
         Page(uint16_t background_color = 0x0000);
-        void update(ButtonEvents button_events);
+        void update();
         void draw();
         void add_widget(AbstractStaticWidget *widget);
         void add_widget(AbstractInteractiveWidget *widget);
+        void clear();
     };
 }
 
