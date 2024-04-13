@@ -1,4 +1,4 @@
-#include "Apps/NotepadApp.h"
+#include "Apps/NotepadApp/App.h"
 
 namespace Apps
 {

@@ -8,7 +8,7 @@ enum class ButtonEvent : uint8_t // указываем тип элемента
     CLICK
 };
 
-class Button
+class PhysButton
 {
 private:
     static const uint16_t _BUTTON_COOLDOWN = 200;
@@ -17,7 +17,7 @@ private:
     bool _was_pressed_flag;
 
 public:
-    Button(uint8_t pin);
+    PhysButton(uint8_t pin);
     void setup();
     ButtonEvent check();
 };

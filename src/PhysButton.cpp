@@ -3,14 +3,14 @@
 // ButtonEvents
 
 // Button
-Button::Button(uint8_t pin) : _pin(pin) {}
+PhysButton::PhysButton(uint8_t pin) : _pin(pin) {}
 
-void Button::setup()
+void PhysButton::setup()
 {
     pinMode(_pin, INPUT_PULLUP);
 }
 
-ButtonEvent Button::check()
+ButtonEvent PhysButton::check()
 {
     bool button_status = !digitalRead(_pin);
     if (button_status && !_was_pressed_flag && (millis() > _last_press_time)) //

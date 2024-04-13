@@ -12,20 +12,20 @@
 #include "Managers/SDManager.h"
 
 #include "Apps/AbstractApp.h"
-#include "Apps/SettingsApp.h"
-#include "Apps/NotepadApp.h"
-#include "Apps/IRHubApp.h"
+#include "Apps/SettingsApp/App.h"
+#include "Apps/NotepadApp/App.h"
+#include "Apps/IRHubApp/App.h"
 
 Adafruit_ST7735 screen(TFT_CS, TFT_DC, TFT_RST);
 Managers::AppManager app_manager;
 
 #pragma region Buttons
-Button up_button = Button(UP_BUTTON_PIN);
-Button down_button = Button(DOWN_BUTTON_PIN);
-Button left_button = Button(LEFT_BUTTON_PIN);
-Button right_button = Button(RIGHT_BUTTON_PIN);
-Button center_button = Button(CENTER_BUTTON_PIN);
-Button back_button = Button(BACK_BUTTON_PIN);
+PhysButton up_button = PhysButton(UP_BUTTON_PIN);
+PhysButton down_button = PhysButton(DOWN_BUTTON_PIN);
+PhysButton left_button = PhysButton(LEFT_BUTTON_PIN);
+PhysButton right_button = PhysButton(RIGHT_BUTTON_PIN);
+PhysButton center_button = PhysButton(CENTER_BUTTON_PIN);
+PhysButton back_button = PhysButton(BACK_BUTTON_PIN);
 
 ButtonEvent btn_st_up;
 ButtonEvent btn_st_down;
@@ -39,7 +39,7 @@ ButtonEvent btn_st_back;
 
 SettingsApp settings_app;
 NotepadApp notepad_app;
-IRHubApp ir_hub_app;
+IRHub::IRHubApp ir_hub_app;
 
 AbstractApp *app_array[] = {
     &settings_app,

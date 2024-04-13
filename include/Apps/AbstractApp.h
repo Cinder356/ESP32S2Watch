@@ -15,7 +15,6 @@ namespace Apps
 
     class AbstractApp
     {
-    private:
     public:
         // const AppType APP_TYPE = AppType::NOT_IMPLEMENTED;
 
