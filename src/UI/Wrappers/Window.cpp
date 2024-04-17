@@ -28,13 +28,12 @@ namespace UI::Wrappers
     void Window::draw()
     {
         screen.fillScreen(_background_color);
-        if (_static_widgets_vector.size() > 0)
-            for (uint16_t i = 0; i < _static_widgets_vector.size(); i++)
-                _static_widgets_vector[i]->draw();
+        for (uint16_t i = 0; i < _static_widgets_vector.size(); i++)
+            _static_widgets_vector[i]->draw();
+        for (uint16_t i = 0; i < _interactive_widgets_vector.size(); i++)
+            _interactive_widgets_vector[i]->draw();
         if (_interactive_widgets_vector.size() > 0)
         {
-            for (uint16_t i = 0; i < _interactive_widgets_vector.size(); i++)
-                _interactive_widgets_vector[i]->draw();
             _interactive_widgets_vector[_cursor]->select();
         }
     }
@@ -44,27 +43,22 @@ namespace UI::Wrappers
 
     void Window::open_page(AbstractPage *page_ptr)
     {
-        if (_current_page_ptr != nullptr)
-            delete _current_page_ptr;
+        clear();
         _current_page_ptr = page_ptr;
         _current_page_ptr->open();
-    }
-
-    template <typename PageClass>
-    void Window::open_page()
-    {
-        open_page(new PageClass(this));
+        draw();
     }
 
     void Window::clear()
     {
-        for (uint16_t i = 0; i < _static_widgets_vector.size(); i++)
-            delete _static_widgets_vector[i];
-        for (uint16_t i = 0; i < _interactive_widgets_vector.size(); i++)
-            delete _interactive_widgets_vector[i];
+        for (auto widget : _static_widgets_vector)
+            delete widget;
+        for (auto widget : _interactive_widgets_vector)
+            delete widget;
         _static_widgets_vector.clear();
         _interactive_widgets_vector.clear();
-        if (_current_page_ptr == nullptr)
+
+        if (_current_page_ptr != nullptr)
             delete _current_page_ptr;
         _cursor = 0;
     }

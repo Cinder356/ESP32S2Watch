@@ -21,6 +21,7 @@ namespace UI::Widgets::Interactive
         uint16_t _text_color;
 
     public:
+        ~UIButton() override;
         UIButton(uint8_t x, uint8_t y, const char *text, std::function<void()> func, uint16_t btn_color = 0xf00f, uint16_t text_color = 0xffff);
         void draw() override;
         void select() override;

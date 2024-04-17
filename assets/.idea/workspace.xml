@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="beec4d16-fb5e-48ac-983c-8397c818c0c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/transformation_tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/arr.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/arr.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/do_bin_array.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/do_bin_array.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../include/Static/Bitmaps.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/Static/Bitmaps.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../include/Apps/IRHubApp/AllPages.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/Apps/IRHubApp/AllPages.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../include/UI/Wrappers/Window.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/UI/Wrappers/Window.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platformio.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../platformio.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/Apps/IRHubApp/App.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/Apps/IRHubApp/App.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/Apps/IRHubApp/IRSendPage.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/Apps/IRHubApp/IRSendPage.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/Apps/IRHubApp/MainMenuPage.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/Apps/IRHubApp/MainMenuPage.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/UI/Wrappers/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/UI/Wrappers/Window.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,17 +39,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.do_bin_array.executor": "Run",
-    "Python.transformation_tests.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Projects/C++/Arduino/PlatformIO/esp32s2_Watch/assets/scripts/venv",
-    "settings.editor.selected.configurable": "editor.preferences.tabs"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.do_bin_array.executor&quot;: &quot;Run&quot;,
+    &quot;Python.transformation_tests.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projects/C++/Arduino/PlatformIO/esp32s2_Watch/assets/scripts/venv&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

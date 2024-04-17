@@ -1,5 +1,5 @@
-#ifndef _PAGE_H
-#define _PAGE_H
+#ifndef _WINDOW_H
+#define _WINDOW_H
 
 #include <vector>
 #include "Static/Screen.h"
@@ -38,7 +38,7 @@ namespace UI::Wrappers
         void add_widget(AbstractInteractiveWidget *widget);
         void open_page(AbstractPage *page_ptr);
         template <typename PageClass>
-        void open_page();
+        void open_page() { open_page(new PageClass(this)); }
         void clear();
     };
 }

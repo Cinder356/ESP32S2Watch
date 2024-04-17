@@ -24,30 +24,6 @@ namespace Apps::IRHub
         void update() override;
         uint16_t *get_icon() const override;
     };
-
-    // class FirstPage : public UI::Wrappers::AbstractPage
-    // {
-    // private:
-    //     UI::Wrappers::Window *_window;
-
-    //     void redirect();
-
-    // public:
-    //     FirstPage();
-    //     void open() override;
-    //     void update() override;
-    // };
-
-    //     class SecondPage : public UI::Wrappers::AbstractPage
-    // {
-    // private:
-    //     UI::Wrappers::Window *_window;
-
-    // public:
-    //     SecondPage(UI::Wrappers::Window *window);
-    //     void open() override;
-    //     void update() override;
-    // };
 }
 
 #endif

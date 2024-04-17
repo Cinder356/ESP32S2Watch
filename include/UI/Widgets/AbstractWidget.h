@@ -9,6 +9,7 @@ namespace UI::Widgets
     {
         private:
         public:
+            virtual ~AbstractWidget() = 0;
             virtual void draw() = 0;
     };
 }

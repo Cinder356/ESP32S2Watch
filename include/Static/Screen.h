@@ -32,6 +32,13 @@
 
 extern Adafruit_ST7735 screen;
 
+template <typename T>
+void pf(T v){
+    delay(300);
+    Serial.println(v);
+    delay(300);
+}
+
 // void draw_rotated_img(uint8_t s_x, uint8_t s_y, uint16_t *img, uint8_t w, uint8_t h, int16_t rotate_degree)
 // {
 //   const float radian = rotate_degree * PI / 180;

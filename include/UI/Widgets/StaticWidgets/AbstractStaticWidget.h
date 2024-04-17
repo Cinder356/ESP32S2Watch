@@ -7,11 +7,10 @@ namespace UI::Widgets::Static
 {
     class AbstractStaticWidget : public AbstractWidget
     {
-        private:
-            uint8_t x;
-            uint8_t y;
-        public:
-            virtual void draw() override = 0;
+    private:
+    public:
+        virtual ~AbstractStaticWidget() override = 0;
+        virtual void draw() override = 0;
     };
 }
 

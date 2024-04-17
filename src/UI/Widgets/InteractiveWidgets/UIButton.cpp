@@ -2,6 +2,8 @@
 
 namespace UI::Widgets::Interactive
 {
+    UIButton::~UIButton() { delete[] _text; }
+
     UIButton::UIButton(uint8_t x, uint8_t y, const char *text, std::function<void()> func, uint16_t btn_color, uint16_t text_color)
         : _x(x), _y(y), _func(func), _btn_color(btn_color), _text_color(text_color)
     {

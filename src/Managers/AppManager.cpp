@@ -41,6 +41,8 @@ namespace Managers
         if (_current_app_ptr != nullptr)
             close_current_app();
 
+        Serial.println("Before open app free heap: " + String(esp_get_free_heap_size()));
+
         _current_app_ptr = app;
         _current_app_ptr->start();
     }
@@ -49,6 +51,7 @@ namespace Managers
     {
         _current_app_ptr->close();
         _current_app_ptr = nullptr;
+        Serial.println("After close app free heap: " + String(esp_get_free_heap_size()));
         start_menu();
     }
 

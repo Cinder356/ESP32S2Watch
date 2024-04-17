@@ -16,6 +16,8 @@
 #include "Apps/NotepadApp/App.h"
 #include "Apps/IRHubApp/App.h"
 
+#include <esp32-hal-matrix.h>
+
 Adafruit_ST7735 screen(TFT_CS, TFT_DC, TFT_RST);
 Managers::AppManager app_manager;
 

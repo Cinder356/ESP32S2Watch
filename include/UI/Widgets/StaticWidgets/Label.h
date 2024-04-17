@@ -11,9 +11,10 @@ namespace UI::Widgets::Static
             char* _text_ptr;
             uint8_t _x;
             uint8_t _y;
+            uint16_t _text_color;
         public:
-            ~Label();
-            Label(uint8_t x, uint8_t y, const char* text_ptr);
+            ~Label() override;
+            Label(uint8_t x, uint8_t y, const char* text_ptr, uint16_t text_color=0xffff);
             void draw() override;
     };
 }
