@@ -14,4 +14,7 @@
 #define CENTER_BUTTON_PIN 37
 #define BACK_BUTTON_PIN 39
 
+#define IR_RECEIVER_PIN 3
+#define IR_SENDER_PIN 1
+
 #endif

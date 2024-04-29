@@ -39,7 +39,7 @@ namespace Managers
     }
 
     size_t SDManager::get_file_size(const char *file_path)
-    {   
+    {
         _on_cd();
 
         File file = SD.open(file_path);
@@ -99,6 +99,18 @@ namespace Managers
         dir.close();
         _off_cd();
         return files_amount;
+    }
+
+    void SDManager::write_file(const char *path, uint8_t *text_buffer, size_t buffer_size)
+    {
+        _on_cd();
+
+        File file = SD.open(path, FILE_WRITE);
+        for (size_t i = 0; i < buffer_size; i++)
+            file.write(text_buffer[i]);
+
+        file.close();
+        _off_cd();
     }
 
     char *SDManager::read_file(const char *path, size_t start_byte, size_t end_byte)

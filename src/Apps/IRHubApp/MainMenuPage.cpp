@@ -2,12 +2,13 @@
 
 namespace Apps::IRHub::Pages
 {
-    MainMenuPage::MainMenuPage(Window *window) : _window(window) {}
+    MainMenuPage::MainMenuPage(Window *window_ptr) : _window_ptr(window_ptr) {}
 
     void MainMenuPage::open()
     {
-        _window->add_widget(new Label(20, 20, "heyyyy"));
-        _window->add_widget(new UIButton(20, 30, "click me", std::bind(&Window::open_page<IRSendPage>, _window)));
+        const uint16_t btn_color = ST7735_ORANGE;
+        _window_ptr->add_widget(new UIButton(40, 30, "Send", std::bind(&Window::open_page<IRSendPage>, _window_ptr), btn_color));
+        _window_ptr->add_widget(new UIButton(40, 45, "Read", std::bind(&Window::open_page<IRReadPage>, _window_ptr), btn_color));
     }
 
     void MainMenuPage::update()

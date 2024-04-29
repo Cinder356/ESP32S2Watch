@@ -15,7 +15,7 @@ namespace UI::Widgets::Interactive
     private:
         uint8_t _x;
         uint8_t _y;
-        char *_text;
+        char *_text_ptr;
         std::function<void()> _func;
         uint16_t _btn_color;
         uint16_t _text_color;
@@ -27,6 +27,7 @@ namespace UI::Widgets::Interactive
         void select() override;
         void deselect() override;
         void invoke() override;
+        void change_text(const char* new_text);
     };
 }
 #endif

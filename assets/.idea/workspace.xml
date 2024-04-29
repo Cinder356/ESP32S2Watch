@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="beec4d16-fb5e-48ac-983c-8397c818c0c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.vscode/settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../include/Apps/IRHubApp/AllPages.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/Apps/IRHubApp/AllPages.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../include/UI/Wrappers/Window.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/UI/Wrappers/Window.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platformio.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../platformio.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../include/Apps/IRHubApp/App.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/Apps/IRHubApp/App.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../include/Apps/IRHubApp/MainMenuPage.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/Apps/IRHubApp/MainMenuPage.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../include/UI/Wrappers/AbstractPage.h" beforeDir="false" afterPath="$PROJECT_DIR$/../include/UI/Wrappers/AbstractPage.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/Apps/IRHubApp/App.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/Apps/IRHubApp/App.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/Apps/IRHubApp/IRSendPage.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/Apps/IRHubApp/IRSendPage.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/Apps/IRHubApp/MainMenuPage.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/Apps/IRHubApp/MainMenuPage.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/UI/Wrappers/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/UI/Wrappers/Window.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

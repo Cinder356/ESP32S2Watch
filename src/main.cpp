@@ -7,6 +7,7 @@
 
 #include "Static/Pins.h"
 #include "Static/Bitmaps.h"
+#include "Static/IRreceiver.h"
 #include "PhysButton.h"
 #include "Managers/AppManager.h"
 #include "Managers/SDManager.h"
@@ -18,6 +19,7 @@
 
 #include <esp32-hal-matrix.h>
 
+IRrecv *ir_receiver_ptr;
 Adafruit_ST7735 screen(TFT_CS, TFT_DC, TFT_RST);
 Managers::AppManager app_manager;
 

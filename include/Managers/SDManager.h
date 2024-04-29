@@ -25,6 +25,8 @@ namespace Managers
         static std::vector<String> get_files_by_path(const char *path, bool all_path = 1, uint16_t start_index = 0, uint16_t end_index = USHRT_MAX);
         // @brief returns files amount in directory by path
         static uint16_t get_files_amount(const char *path);
+        // @brief creates file and writes data
+        static void write_file(const char *path, uint8_t *text_buffer, size_t buffer_size);
         static char *read_file(const char *path, size_t start_byte = 0, size_t end_byte = 0);
         static uint16_t *read_bin_image(const char *path);
     };

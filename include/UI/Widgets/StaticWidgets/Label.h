@@ -16,6 +16,7 @@ namespace UI::Widgets::Static
             ~Label() override;
             Label(uint8_t x, uint8_t y, const char* text_ptr, uint16_t text_color=0xffff);
             void draw() override;
+            void change_text(const char* new_text);
     };
 }
 

@@ -5,17 +5,13 @@ namespace Apps
     void NotepadApp::start()
     {
         _file_explorer_ptr = new UI::UISolutions::FileExplorer();
-        _file_explorer_ptr->start(TEXT_FILES_FOLDER);
+        _file_explorer_ptr->start(TEXT_FILES_FOLDER_PATH);
         _app_status = AppStatus::EXPLORING;
     }
 
     void NotepadApp::close()
     {
-        Serial.print("Free heap before: ");
-        Serial.println(ESP.getFreeHeap());
         delete _file_explorer_ptr;
-        Serial.print("Free heap after: ");
-        Serial.println(ESP.getFreeHeap());
     }
 
     void NotepadApp::update()

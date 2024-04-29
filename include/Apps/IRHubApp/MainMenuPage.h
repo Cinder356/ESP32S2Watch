@@ -8,10 +8,10 @@ namespace Apps::IRHub::Pages
     class MainMenuPage : public AbstractPage
     {
     private:
-        Window *_window;
+        Window *_window_ptr;
 
     public:
-        MainMenuPage(Window *window);
+        MainMenuPage(Window *window_ptr);
         void open() override;
         void update() override;
     };

@@ -15,7 +15,7 @@ namespace Apps::IRHub
     class IRHubApp : public Apps::AbstractApp
     {
     private:
-        UI::Wrappers::Window *_window;
+        UI::Wrappers::Window *_window_ptr;
 
     public:
         // ~IRHubApp();
