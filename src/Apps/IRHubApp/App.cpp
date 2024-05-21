@@ -6,8 +6,10 @@ namespace Apps::IRHub
     {
         _window_ptr = new Window();
         _window_ptr->open_page<Pages::MainMenuPage>();
+        // pinMode(IR_SENDER_PIN, OUTPUT);
+        // digitalWrite(IR_SENDER_PIN, 1);
     }
-    void IRHubApp::close() { delete _window_ptr; }
+    void IRHubApp::close() { delete _window_ptr; } // digitalWrite(IR_SENDER_PIN, 0);
     void IRHubApp::update()
     {
         _window_ptr->update();

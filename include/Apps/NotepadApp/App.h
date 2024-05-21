@@ -31,11 +31,11 @@ namespace Apps
     private:
         UI::UISolutions::FileExplorer *_file_explorer_ptr;
         AppStatus _app_status = AppStatus::NONE;
-        String _file_path;
+        char* _file_path_ptr;
         uint8_t _current_page;
         uint8_t _file_pages_quantity;
 
-        void open_txt(String path);
+        void open_txt(const char* path);
         void draw_page();
     public:
         // ~SettingsApp();

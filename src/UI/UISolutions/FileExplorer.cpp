@@ -7,13 +7,16 @@ namespace UI::UISolutions
         change_dir(start_dir.c_str());
     };
 
-    String FileExplorer::loop()
+    const char* FileExplorer::loop()
     {
         if (btn_st_center == ButtonEvent::CLICK)
         {
             String selected_path = Managers::SDManager::get_filename_by_index(_current_dir.c_str(), _cursor);
             if (selected_path.lastIndexOf('.') != -1)
-                return selected_path;
+            {
+                btn_st_center = ButtonEvent::NONE;
+                return selected_path.c_str();
+            }
             change_dir(selected_path);
         }
         if (btn_st_left == ButtonEvent::CLICK)
@@ -53,7 +56,7 @@ namespace UI::UISolutions
             draw_cursor(FE_CURSOR_COLOR);
         }
 
-        return "";
+        return nullptr;
     }
 
     void FileExplorer::change_dir(String path)
@@ -77,7 +80,7 @@ namespace UI::UISolutions
         uint8_t start_find_files_index = _current_page * FE_MAX_FILENAMES_QUANTITY;
         uint8_t end_fine_files_index = start_find_files_index + FE_MAX_FILENAMES_QUANTITY - 1;
         std::vector<String> filenames_vector = Managers::SDManager::get_files_by_path(_current_dir.c_str(), 0, start_find_files_index, end_fine_files_index);
-        
+
         screen.fillScreen(FE_BACKGROUND);
         screen.setCursor(0, 0);
         screen.setTextSize(FE_TEXT_SIZE);
@@ -95,7 +98,7 @@ namespace UI::UISolutions
             screen.println(filename);
         }
         // -permanent labels drawing-
-        screen.fillRect(0, (SCREEN_HEIGHT - GET_TEXT_HEIGHT(FE_TEXT_SIZE)), SCREEN_WIDTH,  SCREEN_HEIGHT - (SCREEN_HEIGHT - GET_TEXT_HEIGHT(FE_TEXT_SIZE)), FE_TEXT_COLOR);
+        screen.fillRect(0, (SCREEN_HEIGHT - GET_TEXT_HEIGHT(FE_TEXT_SIZE)), SCREEN_WIDTH, SCREEN_HEIGHT - (SCREEN_HEIGHT - GET_TEXT_HEIGHT(FE_TEXT_SIZE)), FE_TEXT_COLOR);
         screen.setTextColor(FE_BACKGROUND);
         screen.setCursor(FE_LEFT_TEXT_MARGIN, (SCREEN_HEIGHT - GET_TEXT_HEIGHT(FE_TEXT_SIZE)));
         screen.print("<- cd ..");

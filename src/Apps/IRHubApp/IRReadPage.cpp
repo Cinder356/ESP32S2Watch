@@ -82,8 +82,14 @@ namespace Apps::IRHub::Pages
         const char *path_template = "%s/ir_%d.bin";
         char path_buff[strlen(IR_FILES_FOLDER_PATH) + strlen(path_template)];
         sprintf(path_buff, path_template, IR_FILES_FOLDER_PATH, file_quantity);
-        Serial.println(path_buff);
-        Managers::SDManager::write_file(path_buff, (uint8_t *)_results.rawbuf, _results.rawlen * sizeof(uint16_t));
+        uint16_t ir_code_buff[_results.rawlen];
+        for (uint8_t i = 1; i < _results.rawlen; i++)
+            ir_code_buff[i - 1] = _results.rawbuf[i] * kRawTick;
+        Serial.printf("buff_len: %d\n", _results.rawlen);
+        for (uint8_t i; i < 4; i++)
+            Serial.printf("%d ", ir_code_buff[i]);
+        Serial.println();
+        Managers::SDManager::write_file(path_buff, (uint8_t *)ir_code_buff, _results.rawlen * sizeof(uint16_t));
         _signal_was_saved = 1;
     }
 

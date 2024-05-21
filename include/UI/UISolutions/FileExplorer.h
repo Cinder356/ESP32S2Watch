@@ -30,7 +30,7 @@ namespace UI::UISolutions
         public:
             void start(String start_dir = BASE_DIR);
             // @brief On finding file returns full path
-            String loop();
+            const char* loop();
     };
 }
 

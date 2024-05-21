@@ -119,15 +119,6 @@ namespace Managers
 
         File file = SD.open(path, FILE_READ);
 
-        Serial.println("read_file statistic: ");
-        Serial.println("    path: " + String(path));
-        Serial.println("    start_byte: " + String(start_byte));
-        Serial.println("    end_byte: " + String(end_byte));
-        Serial.println("    file_status: " + String(1 ? file : 0));
-        Serial.println("    file_size: " + String(file.size()));
-        // Serial.println("    : " + String());
-        // Serial.println("    : " + String());
-
         if (!file || file.isDirectory())
         {
             file.close();
@@ -138,17 +129,13 @@ namespace Managers
         size_t file_size = file.size();
         if (end_byte == 0 || end_byte > file_size)
             end_byte = file_size;
-
         if (end_byte <= start_byte)
         {
             file.close();
             _off_cd();
             return nullptr;
         }
-
-        // Serial.println("start: " + String(start_byte));
-        // Serial.println("end: " + String(end_byte));
-
+        
         size_t buffer_size = end_byte - start_byte + 1;
         char *buffer = new char[buffer_size];
         file.seek(start_byte);

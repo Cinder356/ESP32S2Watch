@@ -8,15 +8,18 @@ namespace UI::Wrappers
 
     void Window::update()
     {
-        if (btn_st_center == ButtonEvent::CLICK)
+        if (btn_st_center == ButtonEvent::CLICK && is_active)
+        {
             _interactive_widgets_vector[_cursor]->invoke();
-        if (btn_st_up == ButtonEvent::CLICK && _cursor > 0)
+            btn_st_center = ButtonEvent::NONE;
+        }
+        if (btn_st_up == ButtonEvent::CLICK && is_active && _cursor > 0)
         {
             _interactive_widgets_vector[_cursor]->deselect();
             _cursor--;
             _interactive_widgets_vector[_cursor]->select();
         }
-        if (btn_st_down == ButtonEvent::CLICK && _cursor < _interactive_widgets_vector.size() - 1)
+        if (btn_st_down == ButtonEvent::CLICK && is_active && _cursor < _interactive_widgets_vector.size() - 1)
         {
             _interactive_widgets_vector[_cursor]->deselect();
             _cursor++;
@@ -46,7 +49,8 @@ namespace UI::Wrappers
         clear();
         _current_page_ptr = page_ptr;
         _current_page_ptr->open();
-        draw();
+        if (is_active)
+            draw();
     }
 
     void Window::clear()

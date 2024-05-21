@@ -30,6 +30,8 @@ namespace UI::Wrappers
         uint16_t _cursor = 0;
 
     public:
+        bool is_active = 1;
+
         ~Window();
         Window(uint16_t background_color = 0x0000);
         void update();
