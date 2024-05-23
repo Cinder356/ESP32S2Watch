@@ -1,4 +1,4 @@
-#include "Apps/NotepadApp/App.h"
+#include "Apps/NotepadApp/NotepadApp.h"
 
 namespace Apps
 {
@@ -12,6 +12,7 @@ namespace Apps
     void NotepadApp::close()
     {
         delete _file_path_ptr;
+        _file_path_ptr = nullptr;
         delete _file_explorer_ptr;
     }
 
@@ -48,7 +49,8 @@ namespace Apps
 
     void NotepadApp::open_txt(const char* path)
     {
-        delete _file_path_ptr;
+        if (_file_path_ptr != nullptr)
+            delete _file_path_ptr;
         _file_path_ptr = new char[strlen(path) + 1];
         strcpy(_file_path_ptr, path);
 
@@ -63,9 +65,12 @@ namespace Apps
         screen.fillScreen(NOTEPAD_BACKGROUND_COLOR);
         screen.setTextColor(NOTEPAD_TEXT_COLOR);
         screen.setCursor(0, 0);
+        Serial.printf("dp1 free heap: %d\n", esp_get_free_heap_size());
         char* text = Managers::SDManager::read_file(_file_path_ptr, _current_page * NOTEPAD_MAX_CHAR_QUANTITY, (_current_page + 1) * NOTEPAD_MAX_CHAR_QUANTITY);
+        Serial.printf("dp2 free heap: %d\n", esp_get_free_heap_size());
         screen.print(text);
         delete[] text;
+        Serial.printf("dp3 free heap: %d\n", esp_get_free_heap_size());
         // это дристня ниже
         // for (uint8_t row; row < NOTEPAD_FILE_TEXT_LINES_QUANTITY; row++)
         // {

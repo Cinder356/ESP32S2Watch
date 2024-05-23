@@ -1,4 +1,4 @@
-#include "Apps/SettingsApp/App.h"
+#include "Apps/SettingsApp/SettingsApp.h"
 
 namespace Apps
 {

@@ -1,4 +1,4 @@
-#include "Apps/IRHubApp/App.h"
+#include "Apps/IRHubApp/IRHubApp.h"
 
 namespace Apps::IRHub
 {

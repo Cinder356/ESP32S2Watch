@@ -13,9 +13,9 @@
 #include "Managers/SDManager.h"
 
 #include "Apps/AbstractApp.h"
-#include "Apps/SettingsApp/App.h"
-#include "Apps/NotepadApp/App.h"
-#include "Apps/IRHubApp/App.h"
+#include "Apps/SettingsApp/SettingsApp.h"
+#include "Apps/NotepadApp/NotepadApp.h"
+#include "Apps/IRHubApp/IRHubApp.h"
 
 #include <esp32-hal-matrix.h>
 
