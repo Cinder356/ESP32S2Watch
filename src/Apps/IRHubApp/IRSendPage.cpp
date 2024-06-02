@@ -1,4 +1,4 @@
-#include "Apps/IRHubApp/AllPages.h"
+#include "Apps/IRHubApp/IRHubAllPages.h"
 
 namespace Apps::IRHub::Pages
 {

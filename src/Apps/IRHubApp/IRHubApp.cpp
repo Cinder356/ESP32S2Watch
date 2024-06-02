@@ -5,7 +5,7 @@ namespace Apps::IRHub
     void IRHubApp::start()
     {
         _window_ptr = new Window();
-        _window_ptr->open_page<Pages::MainMenuPage>();
+        _window_ptr->open_page<Pages::IRMainMenuPage>();
         // pinMode(IR_SENDER_PIN, OUTPUT);
         // digitalWrite(IR_SENDER_PIN, 1);
     }

@@ -5,13 +5,13 @@
 
 namespace Apps::IRHub::Pages
 {
-    class MainMenuPage : public AbstractPage
+    class IRMainMenuPage : public AbstractPage
     {
     private:
         Window *_window_ptr;
 
     public:
-        MainMenuPage(Window *window_ptr);
+        IRMainMenuPage(Window *window_ptr);
         void open() override;
         void update() override;
     };

@@ -1,5 +1,5 @@
-#ifndef _IR_HUB_APP_H
-#define _IR_HUB_APP_H
+#ifndef _MINESWEEPER_APP
+#define _MINESWEEPER_APP
 
 #include "Apps/AbstractApp.h"
 #include "Managers/SDManager.h"
@@ -8,17 +8,16 @@
 #include "UI/UISolutions/SelectionList.h"
 #include "UI/Wrappers/Window.h"
 
-#include "IRMainMenuPage.h"
+#include "MinesweeperMainMenuPage.h"
 
-namespace Apps::IRHub
+namespace Apps::Minesweeper
 {
-    class IRHubApp : public Apps::AbstractApp
+    class MinesweeperApp : public Apps::AbstractApp
     {
     private:
         UI::Wrappers::Window *_window_ptr;
 
     public:
-        // ~IRHubApp();
         void start() override;
         void close() override;
         void update() override;

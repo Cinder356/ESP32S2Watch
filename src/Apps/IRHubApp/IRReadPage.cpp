@@ -1,4 +1,4 @@
-#include "Apps/IRHubApp/AllPages.h"
+#include "Apps/IRHubApp/IRHubAllPages.h"
 
 namespace Apps::IRHub::Pages
 {
@@ -22,7 +22,7 @@ namespace Apps::IRHub::Pages
         _window_ptr->add_widget(_change_status_btn_ptr);
         _window_ptr->add_widget(new UIButton(40, 50, "Try send", std::bind(&IRReadPage::btn_try_send, this)));
         _window_ptr->add_widget(new UIButton(40, 65, "Save", std::bind(&IRReadPage::btn_save_current_ir, this)));
-        _window_ptr->add_widget(new UIButton(40, 80, "Back", std::bind(&Window::open_page<MainMenuPage>, _window_ptr), ST7735_RED));
+        _window_ptr->add_widget(new UIButton(40, 80, "Back", std::bind(&Window::open_page<IRMainMenuPage>, _window_ptr), ST7735_RED));
         _ir_code_label_ptr = new Label(_IRP_IR_CODE_DESCRIPTION_X, _IRP_IR_CODE_DESCRIPTION_Y, "");
         _window_ptr->add_widget(_ir_code_label_ptr);
         _ir_type_label_ptr = new Label(_IRP_IR_CODE_DESCRIPTION_X, _IRP_IR_CODE_DESCRIPTION_Y + 8, "");

@@ -16,6 +16,7 @@
 #include "Apps/SettingsApp/SettingsApp.h"
 #include "Apps/NotepadApp/NotepadApp.h"
 #include "Apps/IRHubApp/IRHubApp.h"
+#include "Apps/MinesweeperApp/MinesweeperApp.h"
 
 #include <esp32-hal-matrix.h>
 
@@ -44,11 +45,13 @@ ButtonEvent btn_st_back;
 SettingsApp settings_app;
 NotepadApp notepad_app;
 IRHub::IRHubApp ir_hub_app;
+Minesweeper::MinesweeperApp minesweeper_app;
 
 AbstractApp *app_array[] = {
     &settings_app,
     &notepad_app,
-    &ir_hub_app};
+    &ir_hub_app,
+    &minesweeper_app};
 
 #pragma endregion
 
