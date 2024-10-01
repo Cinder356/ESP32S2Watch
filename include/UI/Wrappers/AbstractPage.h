@@ -6,6 +6,7 @@ namespace UI::Wrappers
     class AbstractPage
     {
     public:
+        virtual ~AbstractPage() {};
         virtual void open() = 0;
         virtual void update() = 0;
     };

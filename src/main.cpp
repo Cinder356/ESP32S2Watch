@@ -20,8 +20,6 @@
 #include "Apps/IRHubApp/IRHubApp.h"
 #include "Apps/MinesweeperApp/MinesweeperApp.h"
 
-#include <esp32-hal-matrix.h>
-
 IRrecv *ir_receiver_ptr;
 Adafruit_ST7735 screen(TFT_CS, TFT_DC, TFT_RST);
 Managers::AppManager app_manager;

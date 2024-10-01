@@ -12,7 +12,7 @@ namespace Apps::Minesweeper::Assets
         uint8_t y = _y + 1;
         uint8_t x1 = CELL_WIDTH - 2;
         uint8_t y1 = CELL_HEIGHT - 2;
-        if (is_opened)
+        if (is_open)
         {
             screen.fillRect(x, y, x1, y1, OPENED_CELL_BACKGROUND_COLOR);
             if (is_bomb)
@@ -22,12 +22,12 @@ namespace Apps::Minesweeper::Assets
             }
             if (bombs_around > 0)
             {
-                screen.setCursor(x, y);
+                screen.setCursor(x + 1, y + 1);
                 screen.setTextColor(OPENED_CELL_TEXT_COLOR);
                 screen.print(bombs_around);
             }
         }
-        else if (is_flagged)
+        else if (is_flag)
             screen.drawBitmap(x, y, MINESWEEPER_FLAG, MINESWEEPER_FLAG_W, MINESWEEPER_FLAG_H, FLAG_COLOR);
         else
             screen.fillRect(x, y, x1, y1, CELL_COLOR);

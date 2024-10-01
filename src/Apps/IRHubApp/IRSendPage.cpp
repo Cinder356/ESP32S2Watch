@@ -2,7 +2,7 @@
 
 namespace Apps::IRHub::Pages
 {
-    IRSendPage::~IRSendPage() { _window->is_active = 1; }
+    IRSendPage::~IRSendPage() { _window->is_active = true; }
 
     IRSendPage::IRSendPage(Window *window) : _window(window) {}
 
@@ -11,7 +11,7 @@ namespace Apps::IRHub::Pages
         // _window->add_widget(new UIButton(40, 35, "Search", std::bind(&IRSendPage::btn_start_search, this)));
         // _window->add_widget(new UIButton(40, 50, "Back", std::bind(&Window::open_page<MainMenuPage>, _window), ST7735_RED));
         _ir_sender.begin();
-        _window->is_active = 0;
+        _window->is_active = false;
         _file_explorer.start(IR_FILES_FOLDER_PATH);
     }
 

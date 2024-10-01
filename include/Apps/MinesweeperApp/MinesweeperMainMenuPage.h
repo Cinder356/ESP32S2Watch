@@ -11,6 +11,7 @@ namespace Apps::Minesweeper::Pages
     private:
         Window *_window_ptr;
 
+        void btn_open_game_page(uint8_t field_width, uint8_t field_height, uint8_t bomb_quantity);
     public:
         MinesweeperMainMenuPage(Window *window_ptr);
         void open() override;

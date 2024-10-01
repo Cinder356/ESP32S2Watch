@@ -21,11 +21,11 @@ namespace Apps::Minesweeper::Assets
         static const uint16_t BOMB_COLOR = 0x0000;
         static const uint16_t OPENED_CELL_BACKGROUND_COLOR = 0xE6FA;
         static const uint16_t OPENED_CELL_TEXT_COLOR = 0xF94F;
-        static const uint16_t SELECTED_CELL_EDGE_COLOR = 0x11CC;
+        static const uint16_t SELECTED_CELL_EDGE_COLOR = 0xecce;
 
         bool is_bomb = 0;
-        bool is_flagged = 0;
-        bool is_opened = 0;
+        bool is_flag = 0;
+        bool is_open = 0;
         uint8_t bombs_around = 0;
 
         MinesweeperFieldCell();

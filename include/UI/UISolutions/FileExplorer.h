@@ -6,7 +6,7 @@
 #include "Static/SDPaths.h"
 #include "PhysButton.h"
 
-#define FE_BACKGROUND SCREEN_BACKGROUND
+#define FE_BACKGROUND 0xa00f
 #define FE_CURSOR_COLOR 0xffaf
 #define FE_TEXT_COLOR 0xffff
 #define FE_LEFT_TEXT_MARGIN 5

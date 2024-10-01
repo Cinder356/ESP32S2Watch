@@ -2,10 +2,7 @@
 
 namespace Apps::IRHub::Pages
 {
-    IRReadPage::~IRReadPage()
-    {
-        ir_receiver_ptr->disableIRIn();
-    }
+    IRReadPage::~IRReadPage() { ir_receiver_ptr->disableIRIn(); }
 
     IRReadPage::IRReadPage(Window *window_ptr) : _window_ptr(window_ptr) {}
 
