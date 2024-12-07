@@ -1,4 +1,4 @@
-#ifndef _FILE_EXPLORER_HSMALL_TEXT_SIZE
+#ifndef _FILE_EXPLORER_H
 #define _FILE_EXPLORER_H
 
 #include "Static/Screen.h"
@@ -18,20 +18,21 @@ namespace UI::UISolutions
 {
     class FileExplorer
     {
-        private:
-            String _current_dir;
-            uint8_t _current_dir_files_amount;
-            uint8_t _current_page = 0;
-            uint8_t _cursor = 0;
-            
-            void change_dir(String path);
-            void draw_cursor(uint16_t color);
-            void draw_page();
-        public:
-            void start(String start_dir = BASE_DIR);
-            // @brief On finding file returns full path. You must clear memory after path use!
-            const char* loop();
+    private:
+        String _current_dir;
+        uint8_t _current_dir_files_amount;
+        uint8_t _current_page = 0;
+        uint8_t _cursor = 0;
+
+        void change_dir(String path);
+        void draw_cursor(uint16_t color);
+        void draw_page();
+
+    public:
+        void start(String start_dir = BASE_DIR);
+        // @brief On finding file returns full path. You must clear memory after path use!
+        const char *loop();
     };
 }
 
-#endif  
+#endif

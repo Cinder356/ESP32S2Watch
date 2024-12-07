@@ -9,10 +9,10 @@
 
 #include "Static/Pins.h"
 #include "Static/Bitmaps.h"
-#include "Static/IRreceiver.h"
 #include "PhysButton.h"
 #include "Managers/AppManager.h"
 #include "Managers/SDManager.h"
+#include "Managers/IRManager/IRReceiver.h"
 
 #include "Apps/AbstractApp.h"
 #include "Apps/SettingsApp/SettingsApp.h"
@@ -20,17 +20,16 @@
 #include "Apps/IRHubApp/IRHubApp.h"
 #include "Apps/MinesweeperApp/MinesweeperApp.h"
 
-IRrecv *ir_receiver_ptr;
 Adafruit_ST7735 screen(TFT_CS, TFT_DC, TFT_RST);
 Managers::AppManager app_manager;
 
 #pragma region Buttons
-PhysButton up_button = PhysButton(UP_BUTTON_PIN);
-PhysButton down_button = PhysButton(DOWN_BUTTON_PIN);
-PhysButton left_button = PhysButton(LEFT_BUTTON_PIN);
-PhysButton right_button = PhysButton(RIGHT_BUTTON_PIN);
-PhysButton center_button = PhysButton(CENTER_BUTTON_PIN);
-PhysButton back_button = PhysButton(BACK_BUTTON_PIN);
+PhysButton up_button = PhysButton(UP_BUTTON_PIN, 1);
+PhysButton down_button = PhysButton(DOWN_BUTTON_PIN, 1);
+PhysButton left_button = PhysButton(LEFT_BUTTON_PIN, 1);
+PhysButton right_button = PhysButton(RIGHT_BUTTON_PIN, 1);
+PhysButton center_button = PhysButton(CENTER_BUTTON_PIN, 1);
+PhysButton back_button = PhysButton(BACK_BUTTON_PIN, 1);
 PhysButton command_button = PhysButton(COMMAND_BUTTON_PIN, 1);
 PhysButton home_button = PhysButton(HOME_BUTTON_PIN, 1);
 
@@ -51,7 +50,7 @@ NotepadApp notepad_app;
 IRHub::IRHubApp ir_hub_app;
 Minesweeper::MinesweeperApp minesweeper_app;
 
-AbstractApp *app_array[] = {
+AbstractApp *app_array[] = { // надо бы const на всякий
     &settings_app,
     &notepad_app,
     &ir_hub_app,
@@ -77,6 +76,7 @@ void setup()
   // while (!Serial)
   //   ;
   // delay(200);
+  pinMode(IR_SENDER_PIN, OUTPUT);
 
   // buttons setup
   up_button.setup();
@@ -85,6 +85,8 @@ void setup()
   right_button.setup();
   center_button.setup();
   back_button.setup();
+  command_button.setup();
+  home_button.setup();
 
   // screen setup
   screen.initR(INITR_144GREENTAB);

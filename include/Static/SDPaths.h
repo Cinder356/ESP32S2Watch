@@ -1,6 +1,6 @@
 #ifndef _SD_PATHS_H
 #define _SD_PATHS_H
-
+// ааа, нужно макросы заменить на указатели !!!!
 #define BASE_DIR "/BaseDir"
 
 #define TEXT_FILES_FOLDER_PATH "/BaseDir/Texts"

@@ -18,7 +18,7 @@ private:
     bool _has_external_res;
 
 public:
-    PhysButton(uint8_t pin, bool has_external_res=0);
+    PhysButton(uint8_t pin, bool has_external_res = 0);
     void setup();
     ButtonEvent check();
 };
