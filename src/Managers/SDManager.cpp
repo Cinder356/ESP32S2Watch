@@ -100,15 +100,11 @@ namespace Managers
     void SDManager::write_file(const char *path, uint8_t *text_buffer, size_t buffer_size)
     {
         _on_sd();
-        Serial.printf("path: %s | buff_size: %d", path, buffer_size);
-        Serial.println(1);
+
         File file = SD.open(path, FILE_WRITE);
-        if (!file)
-            Serial.println("!file is true");
-        Serial.println(2);
         for (size_t i = 0; i < buffer_size; i++)
             file.write(text_buffer[i]);
-        Serial.println(3);
+
         file.close();
         _off_sd();
     }
