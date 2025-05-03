@@ -7,10 +7,10 @@ namespace UI::Widgets
 {
     class AbstractWidget
     {
-        private:
-        public:
-            virtual ~AbstractWidget() = 0;
-            virtual void draw() = 0;
+    private:
+    public:
+        virtual ~AbstractWidget() = 0;
+        virtual void draw() = 0;
     };
 }
 

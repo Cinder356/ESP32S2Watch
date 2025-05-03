@@ -1,24 +1,29 @@
 #ifndef _SETTINGS_APP_H
 #define _SETTINGS_APP_H
 
-#include "PhysButton.h"
 #include "Apps/AbstractApp.h"
 #include "Static/SDPaths.h"
 #include "Managers/SDManager.h"
+#include "Managers/PhysBtnManager/PBtnManager.h"
 
-#define SETTINGS_BACKGROUND_COLOR 0xF417 // pink
+using namespace Managers::PhysBtnManager;
 
 namespace Apps
 {
-    class SettingsApp : public Apps::AbstractApp
-    {
-    private:
+	class SettingsApp : public Apps::AbstractApp
+	{
+	private:
+		static const uint16_t kBackgroundColor = 0x000F;
+		static const uint16_t kTextColor = 0xFFFF;
+		static const uint16_t kBorderColor = 0xF800;
+		static const uint16_t kWidgetColor = 0x8410;
 
-    public:
-        void start() override;
-        void close() override;
-        void update() override;
-        uint16_t *get_icon() const override;
-    };
+	public:
+		void start() override;
+		void close() override;
+		void update() override;
+		uint16_t* get_icon() const override;
+		void on_button_event();
+	};
 };
 #endif

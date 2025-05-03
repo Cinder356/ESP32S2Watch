@@ -2,64 +2,43 @@
 
 namespace Apps
 {
-    // SettingsApp::~SettingsApp() {}
-    void SettingsApp::start()
-    {
-        screen.fillScreen(SETTINGS_BACKGROUND_COLOR);
-        screen.setCursor(0, 0);
-        screen.println("settings");
-    }
+	// SettingsApp::~SettingsApp() {}
+	void SettingsApp::start()
+	{
+		screen.fillScreen(kBackgroundColor);
+		screen.setCursor(0, 0);
+		screen.print("settings");
+		PBtnManager::add_callback([this] {this->on_button_event();});
+	}
 
-    void SettingsApp::close() {}
+	void SettingsApp::close() {}
 
-    void SettingsApp::update()
-    {
-        if (btn_st_up == ButtonEvent::CLICK)
-        {
-            screen.fillScreen(SETTINGS_BACKGROUND_COLOR);
-            screen.setCursor(0, 0);
-            screen.println("up");
-        }
-        else if (btn_st_down == ButtonEvent::CLICK)
-        {
-            screen.fillScreen(SETTINGS_BACKGROUND_COLOR);
-            screen.setCursor(0, 0);
-            screen.println("down");
-        }
-        else if (btn_st_left == ButtonEvent::CLICK)
-        {
-            screen.fillScreen(SETTINGS_BACKGROUND_COLOR);
-            screen.setCursor(0, 0);
-            screen.println("left");
-        }
-        else if (btn_st_right == ButtonEvent::CLICK)
-        {
-            screen.fillScreen(SETTINGS_BACKGROUND_COLOR);
-            screen.setCursor(0, 0);
-            screen.println("right");
-        }
-        else if (btn_st_center == ButtonEvent::CLICK)
-        {
-            screen.fillScreen(SETTINGS_BACKGROUND_COLOR);
-            screen.setCursor(0, 0);
-            screen.println("center");
-        }
-        else if (btn_st_back == ButtonEvent::CLICK)
-        {
-            screen.fillScreen(SETTINGS_BACKGROUND_COLOR);
-            screen.setCursor(0, 0);
-            screen.println("back");
-        }
-        else if (btn_st_command == ButtonEvent::CLICK)
-        {
-            screen.fillScreen(SETTINGS_BACKGROUND_COLOR);
-            screen.setCursor(0, 0);
-            screen.println("command");
-        }
-    }
+	void SettingsApp::update()
+	{
 
-    uint16_t *SettingsApp::get_icon() const
-    {
-        return Managers::SDManager::read_bin_image(SETTINGS_ICON_PATH);
-    }
+	}
+
+	uint16_t* SettingsApp::get_icon() const
+	{
+		return Managers::SDManager::read_bin_image(SETTINGS_ICON_PATH);
+	}
+
+	void SettingsApp::on_button_event() {
+		screen.fillScreen(kBackgroundColor);
+		screen.setCursor(0, 0);
+		if (PButtons::back_button.get_state_changing() && PButtons::back_button.get_state() == ButtonState::Released)
+			screen.println("back_button");
+		if (PButtons::command_button.get_state_changing() && PButtons::command_button.get_state() == ButtonState::Released)
+			screen.println("command_button");
+		if (PButtons::up_button.get_state_changing() && PButtons::up_button.get_state() == ButtonState::Released)
+			screen.println("up_button");
+		if (PButtons::left_button.get_state_changing() && PButtons::left_button.get_state() == ButtonState::Released)
+			screen.println("left_button");
+		if (PButtons::center_button.get_state_changing() && PButtons::center_button.get_state() == ButtonState::Released)
+			screen.println("center_button");
+		if (PButtons::right_button.get_state_changing() && PButtons::right_button.get_state() == ButtonState::Released)
+			screen.println("right_button");
+		if (PButtons::down_button.get_state_changing() && PButtons::down_button.get_state() == ButtonState::Released)
+			screen.println("down_button");
+	}
 }
