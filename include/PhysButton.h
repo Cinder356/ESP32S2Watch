@@ -28,7 +28,6 @@ public:
 	PhysButton(uint8_t pin, bool has_external_res = false);
 	void setup();
 	ButtonEvent check();
-	bool check_();
 	ButtonState get_state();
 	bool get_state_changing();
 	uint8_t get_pin();

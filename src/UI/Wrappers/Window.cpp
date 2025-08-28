@@ -2,29 +2,49 @@
 
 namespace UI::Wrappers
 {
-    Window::~Window() { clear(); }
+    Window::~Window()
+    {
+        clear();
+        PBtnManager::remove_handler(_btn_handler_id);
+    }
 
-    Window::Window(uint16_t background_color) : _background_color(background_color) {}
+    Window::Window(uint16_t background_color) : _background_color(background_color)
+    {
+        _btn_handler_id = PBtnManager::add_handler([this](int pin, PBtnEvent event)
+                                                   { this->handle_button_event(pin, event); });
+    }
+
+    void Window::handle_button_event(int pin, PBtnEvent event)
+    {
+        if (event != PBtnEvent::DOWN && !is_active)
+            return;
+
+        switch (pin)
+        {
+        case CENTER_BUTTON_PIN:
+            _interactive_widgets_vector[_cursor]->invoke();
+            break;
+        case UP_BUTTON_PIN:
+            if (_cursor > 0)
+            {
+                _interactive_widgets_vector[_cursor]->deselect();
+                _cursor--;
+                _interactive_widgets_vector[_cursor]->select();
+            }
+            break;
+        case DOWN_BUTTON_PIN:
+            if (_cursor < _interactive_widgets_vector.size() - 1)
+            {
+                _interactive_widgets_vector[_cursor]->deselect();
+                _cursor++;
+                _interactive_widgets_vector[_cursor]->select();
+            }
+            break;
+        }
+    }
 
     void Window::update()
     {
-        if (btn_st_center == ButtonEvent::CLICK && is_active)
-        {
-            _interactive_widgets_vector[_cursor]->invoke();
-            btn_st_center = ButtonEvent::NONE;
-        }
-        if (btn_st_up == ButtonEvent::CLICK && is_active && _cursor > 0)
-        {
-            _interactive_widgets_vector[_cursor]->deselect();
-            _cursor--;
-            _interactive_widgets_vector[_cursor]->select();
-        }
-        if (btn_st_down == ButtonEvent::CLICK && is_active && _cursor < _interactive_widgets_vector.size() - 1)
-        {
-            _interactive_widgets_vector[_cursor]->deselect();
-            _cursor++;
-            _interactive_widgets_vector[_cursor]->select();
-        }
         _current_page_ptr->update();
     }
 

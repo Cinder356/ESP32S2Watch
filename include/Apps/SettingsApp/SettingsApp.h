@@ -4,9 +4,9 @@
 #include "Apps/AbstractApp.h"
 #include "Static/SDPaths.h"
 #include "Managers/SDManager.h"
-#include "Managers/PhysBtnManager/PBtnManager.h"
+#include "Managers/PBtnManager/PBtnManager.h"
 
-using namespace Managers::PhysBtnManager;
+using namespace Managers::PBtnManager;
 
 namespace Apps
 {
@@ -18,12 +18,14 @@ namespace Apps
 		static const uint16_t kBorderColor = 0xF800;
 		static const uint16_t kWidgetColor = 0x8410;
 
+		BtnHandlerID _btn_handler_id;
+
 	public:
 		void start() override;
 		void close() override;
 		void update() override;
-		uint16_t* get_icon() const override;
-		void on_button_event();
+		uint16_t *get_icon() const override;
+		void handle_button_event(int pin, PBtnEvent event);
 	};
 };
 #endif

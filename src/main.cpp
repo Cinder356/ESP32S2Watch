@@ -10,7 +10,7 @@
 #include "Managers/AppManager.h"
 #include "Managers/SDManager.h"
 #include "Managers/IRManager/IRReceiver.h"
-#include "Managers/PhysBtnManager/PBtnManager.h"
+#include "Managers/PBtnManager/PBtnManager.h"
 
 #include "Apps/AbstractApp.h"
 #include "Apps/SettingsApp/SettingsApp.h"
@@ -48,12 +48,11 @@ NotepadApp notepad_app;
 IRHub::IRHubApp ir_hub_app;
 Minesweeper::MinesweeperApp minesweeper_app;
 
-AbstractApp* app_array[] = { // надо бы const на всякий
+AbstractApp *app_array[] = { // надо бы const на всякий
 	&settings_app,
 	&notepad_app,
 	&ir_hub_app,
-	&minesweeper_app
-};
+	&minesweeper_app};
 
 #pragma endregion
 
@@ -79,7 +78,15 @@ void setup()
 	pinMode(IR_SENDER_PIN, OUTPUT);
 
 	// buttons manager setup
-	Managers::PhysBtnManager::PBtnManager::setup();
+	PBtnManager::setup(
+		{PBtn(UP_BUTTON_PIN, 0),
+		 PBtn(DOWN_BUTTON_PIN, 0),
+		 PBtn(LEFT_BUTTON_PIN, 0),
+		 PBtn(RIGHT_BUTTON_PIN, 0),
+		 PBtn(CENTER_BUTTON_PIN, 0),
+		 PBtn(BACK_BUTTON_PIN, 0),
+		 PBtn(COMMAND_BUTTON_PIN, 1),
+		 PBtn(HOME_BUTTON_PIN, 1)});
 
 	up_button.setup(); // ##########
 	down_button.setup();
@@ -99,11 +106,11 @@ void setup()
 	Managers::SDManager::setup();
 
 	// app manager start
-	app_manager.start(app_array, sizeof(app_array) / sizeof(AbstractApp*));
+	app_manager.start(app_array, sizeof(app_array) / sizeof(AbstractApp *));
 }
 void loop()
 {
 	check_buttons();
 	app_manager.loop();
-	Managers::PhysBtnManager::PBtnManager::loop();
+	PBtnManager::loop();
 }

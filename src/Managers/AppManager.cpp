@@ -4,6 +4,11 @@ namespace Managers
 {
     // app manager
 
+    AppManager::~AppManager()
+    {
+        PBtnManager::PBtnManager::remove_handler(_btn_handler_id);
+    }
+
     void AppManager::start(AbstractApp *app_array[], uint8_t app_array_size)
     {
         // filling app vector
@@ -21,19 +26,16 @@ namespace Managers
             _apps_vector[app_index].y = MENU_BASIC_PADDING + row * MENU_ICON_SIZE + row * MENU_PADDING;
         }
 
+        _btn_handler_id = PBtnManager::PBtnManager::add_handler([this](int pin, PBtnManager::PBtnEvent event)
+                                                                { this->handle_button_event(pin, event); });
+
         start_menu();
     }
 
     void AppManager::loop()
     {
-        if (_current_app_ptr == nullptr)
-            update_menu();
-        else
-        {
+        if (_current_app_ptr != nullptr)
             _current_app_ptr->update();
-            if (btn_st_home == ButtonEvent::CLICK)
-                close_current_app();
-        }
     }
 
     void AppManager::open_app(AbstractApp *app)
@@ -55,6 +57,54 @@ namespace Managers
         start_menu();
     }
 
+    void AppManager::handle_button_event(int pin, PBtnManager::PBtnEvent event)
+    {
+        if (event != PBtnManager::PBtnEvent::DOWN)
+            return;
+
+        if (_current_app_ptr != nullptr)
+        {
+            if (pin == HOME_BUTTON_PIN)
+                close_current_app();
+            return;
+        }
+
+        switch (pin)
+        {
+        case UP_BUTTON_PIN:
+            draw_menu_cursor(MENU_BACKGROUND_COLOR);
+            if (_menu_cursor - MENU_COLUMNS >= 0)
+                _menu_cursor -= MENU_COLUMNS;
+            draw_menu_cursor(MENU_CURSOR_COLOR);
+            break;
+        case DOWN_BUTTON_PIN:
+            draw_menu_cursor(MENU_BACKGROUND_COLOR);
+            if (_menu_cursor + MENU_COLUMNS < _apps_vector.size())
+                _menu_cursor += MENU_COLUMNS;
+            draw_menu_cursor(MENU_CURSOR_COLOR);
+            break;
+        case LEFT_BUTTON_PIN:
+            draw_menu_cursor(MENU_BACKGROUND_COLOR);
+            if (_menu_cursor == 0)
+                _menu_cursor = _apps_vector.size() - 1;
+            else
+                _menu_cursor--;
+            draw_menu_cursor(MENU_CURSOR_COLOR);
+            break;
+        case RIGHT_BUTTON_PIN:
+            draw_menu_cursor(MENU_BACKGROUND_COLOR);
+            if (_menu_cursor == _apps_vector.size() - 1)
+                _menu_cursor = 0;
+            else
+                _menu_cursor++;
+            draw_menu_cursor(MENU_CURSOR_COLOR);
+            break;
+        case CENTER_BUTTON_PIN:
+            open_app(_apps_vector[_menu_cursor].app_ptr);
+            break;
+        }
+    }
+
     // ---menu---
 
     void AppManager::start_menu()
@@ -73,44 +123,6 @@ namespace Managers
             delete[] icon;
         }
         draw_menu_cursor(MENU_CURSOR_COLOR);
-    }
-
-    void AppManager::update_menu()
-    {
-        if (btn_st_up == ButtonEvent::CLICK)
-        {
-            draw_menu_cursor(MENU_BACKGROUND_COLOR);
-            if (!(_menu_cursor - MENU_COLUMNS < 0))
-                _menu_cursor -= MENU_COLUMNS;
-            draw_menu_cursor(MENU_CURSOR_COLOR);
-        }
-        else if (btn_st_down == ButtonEvent::CLICK)
-        {
-            draw_menu_cursor(MENU_BACKGROUND_COLOR);
-            if (!(_menu_cursor + MENU_COLUMNS >= _apps_vector.size()))
-                _menu_cursor += MENU_COLUMNS;
-            draw_menu_cursor(MENU_CURSOR_COLOR);
-        }
-        else if (btn_st_left == ButtonEvent::CLICK)
-        {
-            draw_menu_cursor(MENU_BACKGROUND_COLOR);
-            if (_menu_cursor == 0)
-                _menu_cursor = _apps_vector.size() - 1;
-            else
-                _menu_cursor--;
-            draw_menu_cursor(MENU_CURSOR_COLOR);
-        }
-        else if (btn_st_right == ButtonEvent::CLICK)
-        {
-            draw_menu_cursor(MENU_BACKGROUND_COLOR);
-            if (_menu_cursor == _apps_vector.size() - 1)
-                _menu_cursor = 0;
-            else
-                _menu_cursor++;
-            draw_menu_cursor(MENU_CURSOR_COLOR);
-        }
-        else if (btn_st_center == ButtonEvent::CLICK)
-            open_app(_apps_vector[_menu_cursor].app_ptr);
     }
 
     void AppManager::draw_menu_cursor(uint16_t color)

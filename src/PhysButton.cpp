@@ -29,30 +29,6 @@ ButtonEvent PhysButton::check()
 	return ButtonEvent::NONE;
 }
 
-bool PhysButton::check_() {
-	bool button_status = digitalRead(_pin);
-	if (!button_status && !_was_pressed_flag && (millis() > _last_press_time)) //
-	{
-		_was_pressed_flag = true;
-		_last_press_time = millis() + kButtonCooldown;
-		_current_state = ButtonState::Pressed;
-
-		_was_changed = true;
-		return _was_changed;
-	}
-	else if (_was_pressed_flag && button_status)
-	{
-		_was_pressed_flag = false;
-		_current_state = ButtonState::Released;
-
-		_was_changed = true;
-		return _was_changed;
-	}
-
-	_was_changed = false;
-	return _was_changed;
-}
-
 ButtonState PhysButton::get_state() {
 	return _current_state;
 }

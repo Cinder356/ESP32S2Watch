@@ -16,10 +16,9 @@
 #define NOTEPAD_FILE_TEXT_LINES_QUANTITY (GET_MAX_TEXT_LINES(NOTEPAD_TEXT_SIZE) - NOTEPAD_PERMANENT_LABELS_QUANTITY)
 #define NOTEPAD_MAX_CHAR_QUANTITY (NOTEPAD_FILE_TEXT_LINES_QUANTITY * GET_MAX_TEXT_COLUMNS(NOTEPAD_TEXT_SIZE))
 
-
 namespace Apps
 {
-    enum class AppStatus : uint8_t
+    enum class NotepadAppStatus : uint8_t
     {
         NONE,
         EXPLORING,
@@ -30,13 +29,14 @@ namespace Apps
     {
     private:
         UI::UISolutions::FileExplorer *_file_explorer_ptr;
-        AppStatus _app_status = AppStatus::NONE;
-        char* _file_path_ptr;
+        NotepadAppStatus _app_status = NotepadAppStatus::NONE;
+        char *_file_path_ptr;
         uint8_t _current_page;
         uint8_t _file_pages_quantity;
 
-        void open_txt(const char* path);
+        void open_txt(const char *path);
         void draw_page();
+
     public:
         // ~SettingsApp();
         void start() override;

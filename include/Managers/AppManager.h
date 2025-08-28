@@ -4,9 +4,9 @@
 #include <Arduino.h>
 #include <vector>
 
-#include "PhysButton.h"
 #include "Apps/AbstractApp.h"
 #include "Managers/SDManager.h"
+#include "Managers/PBtnManager/PBtnManager.h"
 #include "Static/Bitmaps.h"
 
 #define MENU_ICON_SIZE 32
@@ -21,6 +21,7 @@ using namespace Apps;
 
 namespace Managers
 {
+
     struct MenuAppWidget
     {
         uint8_t x;
@@ -35,14 +36,17 @@ namespace Managers
 
         int8_t _menu_cursor;
         AbstractApp *_current_app_ptr = nullptr;
+        PBtnManager::BtnHandlerID _btn_handler_id;
 
         void start_menu();
-        void update_menu();
         void draw_menu_cursor(uint16_t color);
-        
-        void open_app(AbstractApp* app);
+        void handle_button_event(int pin, PBtnManager::PBtnEvent event);
+
+        void open_app(AbstractApp *app);
+
     public:
-        void start(AbstractApp* app_array[], uint8_t app_array_size);
+        ~AppManager();
+        void start(AbstractApp *app_array[], uint8_t app_array_size);
         void loop();
 
         void close_current_app();

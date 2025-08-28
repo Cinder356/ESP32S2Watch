@@ -5,6 +5,7 @@
 #include "Static/Screen.h"
 #include "PhysButton.h"
 #include "AbstractPage.h"
+#include "Managers/PBtnManager/PBtnManager.h"
 
 #pragma region WidgetsInclude
 #include "UI/Widgets/StaticWidgets/AbstractStaticWidget.h"
@@ -17,6 +18,8 @@ using namespace UI::Widgets::Static;
 using namespace UI::Widgets::Interactive;
 using namespace UI::Wrappers;
 
+using namespace Managers::PBtnManager;
+
 namespace UI::Wrappers
 {
     class Window
@@ -28,6 +31,9 @@ namespace UI::Wrappers
         AbstractPage *_current_page_ptr = nullptr;
         uint16_t _background_color;
         uint16_t _cursor = 0;
+        BtnHandlerID _btn_handler_id;
+
+        void handle_button_event(int pin, PBtnEvent event);
 
     public:
         bool is_active = 1;

@@ -6,7 +6,7 @@ namespace Apps
     {
         _file_explorer_ptr = new UI::UISolutions::FileExplorer();
         _file_explorer_ptr->start(TEXT_FILES_FOLDER_PATH);
-        _app_status = AppStatus::EXPLORING;
+        _app_status = NotepadAppStatus::EXPLORING;
     }
 
     void NotepadApp::close()
@@ -20,7 +20,7 @@ namespace Apps
     {
         switch (_app_status)
         {
-        case AppStatus::EXPLORING:
+        case NotepadAppStatus::EXPLORING:
         {
             const char *path = _file_explorer_ptr->loop();
             if (path != nullptr)
@@ -31,7 +31,7 @@ namespace Apps
             break;
         }
 
-        case AppStatus::TEXT_VIEW:
+        case NotepadAppStatus::TEXT_VIEW:
         {
             if (btn_st_right == ButtonEvent::CLICK && _current_page < _file_pages_quantity)
             {
@@ -57,7 +57,7 @@ namespace Apps
         _file_path_ptr = new char[strlen(path) + 1];
         strcpy(_file_path_ptr, path);
 
-        _app_status = AppStatus::TEXT_VIEW;
+        _app_status = NotepadAppStatus::TEXT_VIEW;
         _current_page = 0;
         _file_pages_quantity = Managers::SDManager::get_file_size(_file_path_ptr) / NOTEPAD_MAX_CHAR_QUANTITY;
         draw_page();
